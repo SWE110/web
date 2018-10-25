@@ -1,3 +1,12 @@
-# recipe-frontend
+# Recipe React
 
-Frontend for recipe app
+Front end for recipe application
+
+## Getting Started
+
+```
+npm install
+npm start
+```
+
+
