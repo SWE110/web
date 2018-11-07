@@ -2,7 +2,7 @@
 // Requires prop "time"
 // Note that time vars are in seconds
 
-import React from 'react';
+import React, {Component} from 'react';
 
 class Timer extends React.Component {
   constructor(props) {
