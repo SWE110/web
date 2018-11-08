@@ -1,0 +1,14 @@
+#primary-container {
+    padding-top: 5%;
+    width: 50%;
+    margin: auto;
+}
+
+#notify {
+    /* display: none; */
+    min-height: 40px;
+}
+
+.title {
+    text-align: center;
+}
