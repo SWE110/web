@@ -8,10 +8,12 @@
   right: 10px;
   border-radius: 5px;
   border: none;
+  z-index: 10000000;
 }
 
 .scroll:hover {
   opacity: 0.8;
+  z-index: 10000000;
 }
 
 .arrow-up {
@@ -21,4 +23,5 @@
   padding: 3px;
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
+  z-index: 10000000;
 }
