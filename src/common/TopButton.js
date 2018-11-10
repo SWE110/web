@@ -8,10 +8,10 @@ class TopButton extends React.Component {
   render() {
     return (
       <button title='Back to top' class='scroll' onClick={ () => { this.scrollToTop(); }}>
-        <span class='arrow-up'></span>
+        <div class='arrow-up'></div>
       </button>
-
     );
   }
 }
+
 export default TopButton;
