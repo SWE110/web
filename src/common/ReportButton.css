@@ -1,0 +1,17 @@
+.report {
+    opacity: 0.5;
+    background-color: gray;
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+    border: none;
+    z-index: 10000000;
+}
+
+.report:hover {
+    opacity: 0.8;
+    z-index: 10000000;
+}
