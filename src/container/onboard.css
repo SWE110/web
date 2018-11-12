@@ -9,6 +9,9 @@
     min-height: 40px;
 }
 
+#center {
+    text-align: center;
+}
 .title {
     text-align: center;
 }
