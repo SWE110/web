@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
@@ -5,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import LoginPage from './container/LoginPage'
 import ForgotPasswordPage from './container/ForgotPasswordPage'
+import RegistrationPage from './container/RegistrationPage'
 
 // Import once everything is implemented
 const HomePage = () => <div>Home Page</div>
@@ -40,8 +42,8 @@ class App extends Component {
 
             {/* Login/Register/Reset Password/Logout */}
             <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/register" component={TodoPage} />
-            <Route exact path="/reset" component={ForgotPasswordPage} />
+            <Route exact path="/register" component={RegistrationPage} />
+            <Route exact path="/reset" component={TodoPage} />
             <Route exact path="/logout" component={TodoPage} />
 
             {/* Profile Page: Protected */}
