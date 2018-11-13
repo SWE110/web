@@ -4,7 +4,6 @@ import './onboard.css'
 import { Link } from 'react-router-dom'
 import { Container, Box, Hero, Title, Input, Button, Notification, SubTitle } from 'reactbulma'
 
-import './onboard.css'
 
 class RegistrationConfirmationPage extends Component {
     constructor(props) {
@@ -51,8 +50,9 @@ class RegistrationConfirmationPage extends Component {
                             <Notification warning id="notify">Kappa</Notification>:
                             ''}
                     </div>
-
+                    <div class = "has-text-centered">
                         <Button id="center" onClick={this.handleConfirmation}>Yum!</Button>
+                    </div>
             </Container>
         )
     }
