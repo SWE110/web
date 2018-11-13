@@ -4,18 +4,15 @@ import 'bulma/css/bulma.css'
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import LoginPage from './container/LoginPage'
-import RegistrationPage from './container/RegistrationPage'
-import RegistrationConfirmationPage from './container/RegistrationConfirmationPage'
+import { PrivateRoute } from './common'
+import { 
+  // HomePage,
+  LoginPage, 
+  ForgotPasswordPage, 
+  RegistrationPage,
+  RegistrationConfirmationPage,
+  RecipePage } from './container'
 
-// Import once everything is implemented
-const HomePage = () => <div>Home Page</div>
-const RecipePage = ({ match }) => (
-  <div>
-    Recipe Page<hr />
-    { (match.params ? JSON.stringify(match.params) : null) }
-  </div>
-)
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
 
@@ -30,7 +27,7 @@ class App extends Component {
         <Router>
           <Switch>
             {/* Home */}
-            <Route exact path="/" component={HomePage} />
+            {/* <Route exact path="/" component={HomePage} /> */}
 
             {/* View Recipes */}
             <Route exact path="/recipes" component={RecipePage} />
@@ -38,7 +35,7 @@ class App extends Component {
             <Route exact path="/recipes/:user/:recipeId" component={RecipePage} />
 
             {/* Submit Recipe: Protected */}
-            <Route exact path="/recipes/submit" component={RecipePage} />
+            <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
 
             {/* Login/Register/Reset Password/Logout */}
             <Route exact path="/login" component={LoginPage} />
