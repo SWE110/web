@@ -10,6 +10,7 @@ import {
   LoginPage, 
   ForgotPasswordPage, 
   RegistrationPage,
+  RegistrationConfirmationPage,
   RecipePage } from './container'
 
 const TodoPage = () => <div>Todo Page</div>
@@ -41,7 +42,7 @@ class App extends Component {
             <Route exact path="/register" component={RegistrationPage} />
             <Route exact path="/reset" component={TodoPage} />
             <Route exact path="/logout" component={TodoPage} />
-
+            <Route exact path="/confirm" component={RegistrationConfirmationPage} />
             {/* Profile Page: Protected */}
             <Route exact path="/profile" component={TodoPage} />
 
