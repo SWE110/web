@@ -11,7 +11,8 @@
     "react-scripts": "2.0.5",
     "react-stars": "^2.2.5",
     "reactbulma": "^3.0.4",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "underscore": "^1.9.1"
   },
   "scripts": {
     "start": "react-scripts start",
