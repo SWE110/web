@@ -1,0 +1,34 @@
+.center {
+    text-align: center;
+}
+
+.recipe-container {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    /* margin: 1% 0; */
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-section {
+    overflow: auto;
+    /* align-items: center; */
+    justify-content: center;
+    display: flex;
+}
+
+.info {
+    width: 40%;
+    margin: 10px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
