@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import LoginPage from './container/LoginPage'
 import RegistrationPage from './container/RegistrationPage'
 import RegistrationConfirmationPage from './container/RegistrationConfirmationPage'
+import ProfilePage from './container/ProfilePage'
 
 // Import once everything is implemented
 const HomePage = () => <div>Home Page</div>
@@ -47,7 +48,7 @@ class App extends Component {
             <Route exact path="/logout" component={TodoPage} />
             <Route exact path="/confirm" component={RegistrationConfirmationPage} />
             {/* Profile Page: Protected */}
-            <Route exact path="/profile" component={TodoPage} />
+            <Route exact path="/profile" component={ProfilePage} />
 
             {/* Handle 404 */}
             <Route component={NullPage} />
