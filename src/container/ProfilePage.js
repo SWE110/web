@@ -53,8 +53,12 @@ class ProfilePage extends Component {
                     <tr>
                         <td width="20%" className="has-text-weight-bold has-background-grey-lighter">Name</td>
                         <td width="40%" className="has-background-white-ter">
-                            {name}
-                            <input className="input" type="text" placeholder="Insert new name" id="newName"></input>
+                            <div className="field has-addons">
+                                <p className="control">
+                                    <input className="input" type="text" placeholder={name} id="newName"></input>
+                                </p>
+
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -69,6 +73,7 @@ class ProfilePage extends Component {
                 <div id="padding"></div>
                 <input  className="input" type="password" placeholder="Insert new password" id="newPass"></input>
                 <div id="padding"></div>
+
                 <input className="button is-info" type="submit" value="Submit Changes" onClick={this.handleUpdateInfo}></input>
                 <div className="notify spacing-base">
                     {this.state.notify ?
@@ -81,5 +86,3 @@ class ProfilePage extends Component {
 }
 
 export default ProfilePage
-
-
