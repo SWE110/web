@@ -22,17 +22,17 @@ class Recipe extends Component {
         <Card className="recipe-card">
           <Hero>
             <Hero.Body>
-              <Container className="center title">
+              <div className="center title">
                 <Title>
                   {this.state.name}
                 </Title>
                 <SubTitle>
                   {this.state.description}
                 </SubTitle>
-              </Container>
+              </div>
             </Hero.Body>
           </Hero>
-          <Container className="info-section">
+          <div className="info-section">
             <Card className="info left">
               <Card.Header.Title>
                 Ingredients
@@ -51,9 +51,9 @@ class Recipe extends Component {
                 {this.state.nutrition.calories}
               </Card.Content>
             </Card>
-          </Container>
+          </div>
 
-          <Container>
+          <div>
             {this.state.recipeInstructions.map((item) => {
               return (
                 <Card className="steps">
@@ -63,7 +63,7 @@ class Recipe extends Component {
                 </Card>
               )
             })}
-          </Container>
+          </div>
         </Card>
 
       </Container>
