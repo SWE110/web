@@ -24,7 +24,7 @@ function update(user) {
     
 }
 
-export const service = {
+export default {
   login,
   logout,
   register,

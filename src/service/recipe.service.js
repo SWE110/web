@@ -1,4 +1,4 @@
-import recipe from './example'
+import { recipe } from './example'
 
 function getRecipes(user) {
     
@@ -16,7 +16,7 @@ function deleteRecipe(user) {
 
 }
 
-export {
+export default {
   getRecipe,
   getRecipes,
   createRecipe,

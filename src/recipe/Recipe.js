@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import { Container, Content, Card, Hero, Title, SubTitle, Icon } from 'reactbulma'
 import _ from 'underscore'
 
+import './Recipe.css'
+
 class Recipe extends Component {
 
   constructor(props) {
     super(props)
-    // console.log(props.params)
+    this.state = props.recipe
     // const { user } = props.params
   }
 
@@ -54,7 +56,7 @@ class Recipe extends Component {
           <Container>
             {this.state.recipeInstructions.map((item) => {
               return (
-                <Card>
+                <Card className="steps">
                   <Card.Content>
                     {item.text}
                   </Card.Content>

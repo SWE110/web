@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Recipe from '../recipe/Recipe'
 
-import { recipe } from '../recipe/example'
+import { recipeService } from '../service'
 
 class RecipePage extends Component {
   constructor(props) {
@@ -15,9 +15,7 @@ class RecipePage extends Component {
 
   render() {
     return (
-      <div>
-        {/* <Recipe recipe={recipe}/> */}
-      </div>
+      <Recipe recipe={recipeService.getRecipe()}/>
     )
   }
 }
