@@ -4,19 +4,16 @@ import 'bulma/css/bulma.css'
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
-import LoginPage from './container/LoginPage'
-import RegistrationPage from './container/RegistrationPage'
-import RegistrationConfirmationPage from './container/RegistrationConfirmationPage'
-import ProfilePage from './container/ProfilePage'
+import { PrivateRoute } from './common'
+import { 
+  // HomePage,
+  LoginPage, 
+  ForgotPasswordPage, 
+  RegistrationPage,
+  RegistrationConfirmationPage,
+  ProfilePage,
+  RecipePage } from './container'
 
-// Import once everything is implemented
-const HomePage = () => <div>Home Page</div>
-const RecipePage = ({ match }) => (
-  <div>
-    Recipe Page<hr />
-    { (match.params ? JSON.stringify(match.params) : null) }
-  </div>
-)
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
 
@@ -31,7 +28,7 @@ class App extends Component {
         <Router>
           <Switch>
             {/* Home */}
-            <Route exact path="/" component={HomePage} />
+            {/* <Route exact path="/" component={HomePage} /> */}
 
             {/* View Recipes */}
             <Route exact path="/recipes" component={RecipePage} />
@@ -39,7 +36,7 @@ class App extends Component {
             <Route exact path="/recipes/:user/:recipeId" component={RecipePage} />
 
             {/* Submit Recipe: Protected */}
-            <Route exact path="/recipes/submit" component={RecipePage} />
+            <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
 
             {/* Login/Register/Reset Password/Logout */}
             <Route exact path="/login" component={LoginPage} />
@@ -58,5 +55,5 @@ class App extends Component {
     )
   }
 }
-
+/* If you're reading this, you've been in a coma for almost 20 years now. We're trying a new technique. We don't know where this message will end up in your dream, but we hope it works. Please wake up, we miss you.*/
 export default App
