@@ -52,27 +52,23 @@ class ProfilePage extends Component {
                 <table width="100%" class="table is-bordered">
                     <tr>
                         <td width="20%" className="has-text-weight-bold has-background-grey-lighter">Name</td>
-                        <td width="40%" className="has-background-white-ter">
-                            <div className="field has-addons">
-                                <p className="control">
-                                    <input className="input" type="text" placeholder={name} id="newName"></input>
-                                </p>
-
-                            </div>
+                        <td width="40%" className="has-background-white-ter profile-name-td">
+                            <input className="input profile-name" type="text" placeholder={name} id="newName"></input>
                         </td>
                     </tr>
                     <tr>
                         <td width="20%" className="has-text-weight-bold has-background-grey-lighter">Email</td>
-                        <td width="40%" className="has-background-white-ter">{email}</td>
+                        <td width="40%" className="has-background-white-ter profile-name-td">
+                            <input disabled readOnly="true" className="input profile-name" type="text" placeholder={email} ></input>
+                        </td>
                     </tr>
                 </table>
                 <SubTitle className="has-text-weight-bold">Password</SubTitle>
 
                 <p> A strong password contains a mix of numbers, letters, and symbols. It is hard to guess, does not resemble a real word,
                     and is only used for this account</p>
-                <div id="padding"></div>
-                <input  className="input" type="password" placeholder="Insert new password" id="newPass"></input>
-                <div id="padding"></div>
+
+                <input  className="input margin" type="password" placeholder="Insert new password" id="newPass"></input>
 
                 <input className="button is-info" type="submit" value="Submit Changes" onClick={this.handleUpdateInfo}></input>
                 <div className="notify spacing-base">
