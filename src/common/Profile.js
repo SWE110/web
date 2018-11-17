@@ -1,6 +1,6 @@
 
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 
 class Dropdown extends React.Component {
   render() {
@@ -22,33 +22,33 @@ class Dropdown extends React.Component {
 
 class Profile extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       showDropDown: false
-    };
+    }
   }
   
   handleHover = (event) => {
-    this.setState({ showDropDown: true });
+    this.setState({ showDropDown: true })
   };
   
   handleLeave = (event) => {
-    this.setState({ showDropDown: false });
+    this.setState({ showDropDown: false })
   };
   
   render() {
     return (
       <ul>
-      <li onMouseLeave={this.handleLeave}>
-            <a onMouseEnter={this.handleHover} href="#">
+        <li onMouseLeave={this.handleLeave}>
+          <a onMouseEnter={this.handleHover} href="#">
               Profile
-            </a>
-            <div>
+          </a>
+          <div>
               
-                { this.state.showDropDown && <Dropdown /> }
+            { this.state.showDropDown && <Dropdown /> }
               
-            </div>
-          </li>
+          </div>
+        </li>
       </ul>
 
     )
@@ -57,7 +57,7 @@ class Profile extends React.Component {
 
 ReactDOM.render(
   <Profile />,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 
-export default Profile;
+export default Profile

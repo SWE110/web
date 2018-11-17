@@ -11,6 +11,7 @@ import {
   ForgotPasswordPage, 
   RegistrationPage,
   RegistrationConfirmationPage,
+  ProfilePage,
   RecipePage } from './container'
 
 const TodoPage = () => <div>Todo Page</div>
@@ -44,7 +45,7 @@ class App extends Component {
             <Route exact path="/logout" component={TodoPage} />
             <Route exact path="/confirm" component={RegistrationConfirmationPage} />
             {/* Profile Page: Protected */}
-            <Route exact path="/profile" component={TodoPage} />
+            <Route exact path="/profile" component={ProfilePage} />
 
             {/* Handle 404 */}
             <Route component={NullPage} />
