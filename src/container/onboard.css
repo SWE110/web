@@ -40,5 +40,34 @@
     display: block;
     border: none;
     border-radius: 0;
+}
 
+.step-numbering {
+    width:10%;
+    float:left;
+    display:inline;
+}
+
+.step-input {
+    width:85%;
+    float:left;
+    display:inline;
+    margin-top: 10px
+}
+
+.ingredient-input {
+    width:100%;
+    float:left;
+    display:inline;
+    margin-top: 10px;
+}
+
+.ingredient-button {
+    width:75%;
+    margin-top: 10px;
+    display: inline-block
+}
+
+.step-table {
+    width:100%;
 }
