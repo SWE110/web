@@ -12,7 +12,10 @@ import {
   RegistrationPage,
   RegistrationConfirmationPage,
   ProfilePage,
-  RecipePage } from './container'
+  RecipePage,
+} from './container'
+
+import CreateRecipePage from './container/CreateRecipe'
 
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
@@ -46,7 +49,7 @@ class App extends Component {
             <Route exact path="/confirm" component={RegistrationConfirmationPage} />
             {/* Profile Page: Protected */}
             <Route exact path="/profile" component={ProfilePage} />
-
+            <Route exact path="/createRecipe" component={CreateRecipePage} />
             {/* Handle 404 */}
             <Route component={NullPage} />
           </Switch>
