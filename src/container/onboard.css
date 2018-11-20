@@ -16,3 +16,59 @@
 .title {
     text-align: center;
 }
+
+
+#line {
+    border: 1px #888888 solid;
+    margin: 20px 0;
+}
+
+.margin {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.profile-name-td {
+    height: 40px;
+    padding: 0 !important;
+}
+
+.profile-name {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: block;
+    border: none;
+    border-radius: 0;
+}
+
+.step-numbering {
+    width:10%;
+    float:left;
+    display:inline;
+}
+
+.step-input {
+    width:85%;
+    float:left;
+    display:inline;
+    margin-top: 10px
+}
+
+.ingredient-input {
+    width:100%;
+    float:left;
+    display:inline;
+    margin-top: 10px;
+}
+
+.ingredient-button {
+    width:75%;
+    margin-top: 10px;
+    display: inline-block
+}
+
+.step-table {
+    width:100%;
+}

@@ -5,11 +5,15 @@ module.exports = {
         "jest": true,
         "browser": true
     },
+    "parser": "babel-eslint",
     "extends": "eslint:recommended",
     "parserOptions": {
+        "ecmaVersion": 8,
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
+            "jsx": true,
+            "arrowFunctions":true,
+            "classes":true
         },
         "sourceType": "module"
     },
