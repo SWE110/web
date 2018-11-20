@@ -8,8 +8,7 @@ class Recipe extends Component {
 
   constructor(props) {
     super(props)
-    this.state = props.recipe
-    // const { user } = props.params
+    this.state = this.props.recipe
   }
 
   componentDidMount() {

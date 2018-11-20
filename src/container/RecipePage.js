@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import Recipe from '../recipe/Recipe'
+import { connect } from 'react-redux'
 
-import { recipeService } from '../service'
+import { recipeActions } from '../actions'
 
 class RecipePage extends Component {
   constructor(props) {
@@ -11,13 +12,26 @@ class RecipePage extends Component {
       recipeId,
       user
     }
+
+    this.props.dispatch(recipeActions.getRecipe(user, recipeId))
   }
 
   render() {
+    const { recipe } = this.props
+    if (recipe.hasRecipe) {
+      return <Recipe recipe={recipe.recipe}/>
+    }
     return (
-      <Recipe recipe={recipeService.getRecipe()}/>
+      <div> Loading... </div>
     )
   }
 }
 
-export default RecipePage
+function mapStateToProps(state) {
+  const { recipe } = state
+  return {
+    recipe
+  }
+}
+
+export default connect(mapStateToProps)(RecipePage)
