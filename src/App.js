@@ -17,7 +17,7 @@ import {
 
 import CreateRecipePage from './container/CreateRecipe'
 
-const ConfigPage = () => <div>{global.CONFIG}</div>
+const ConfigPage = () => <div><pre>{JSON.stringify(global.CONFIG, null, 2)}</pre></div>
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
 

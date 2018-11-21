@@ -1,8 +1,6 @@
 import { recipe } from './example'
 import request from 'request-promise'
 
-const ip = 'http://104.248.220.214:3000'
-
 export default {
   getRecipe,
   getRecipes,
@@ -16,7 +14,7 @@ function getRecipes(user) {
 
 function getRecipe(recipeId) {
   if (recipeId) {
-    return request(`${ip}/recipe/${recipeId}`).then((json) => {
+    return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe/${recipeId}`).then((json) => {
       return JSON.parse(json)
     })
   }
