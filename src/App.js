@@ -1,7 +1,6 @@
 /* eslint-disable linebreak-style */
 import React, { Component } from 'react'
-import 'bulma/css/bulma.css'
-import './App.css'
+import './App.scss'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import { PrivateRoute } from './common'
