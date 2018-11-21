@@ -7,13 +7,12 @@ import { recipeActions } from '../actions'
 class RecipePage extends Component {
   constructor(props) {
     super(props)
-    const { recipeId, user} = props.match.params
+    const { recipeId } = props.match.params
     this.state = {
-      recipeId,
-      user
+      recipeId
     }
 
-    this.props.dispatch(recipeActions.getRecipe(user, recipeId))
+    this.props.dispatch(recipeActions.getRecipe(recipeId))
   }
 
   render() {

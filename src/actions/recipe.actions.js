@@ -18,15 +18,18 @@ function getRecipes(user) {
   function failure(error) { return { type: recipeConstants.GET_ALL_FAILURE, user } }
 }
 
-function getRecipe(user, recipeId) {
+function getRecipe(recipeId) {
   return dispatch => {
-    dispatch(request(user))
-
-    recipeService.getRecipe('7f6e80e40e404fc0a6a077a185f49600').then((recipe) => {
-      dispatch(success(recipe))
-    }).catch((err) => {
-      dispatch(failure(err))
-    })
+    dispatch(request(recipeId))
+    if (!recipeId) {
+      dispatch(failure('Empty ID'))
+    } else {
+      recipeService.getRecipe(recipeId).then((recipe) => {
+        dispatch(success(recipe))
+      }).catch((err) => {
+        dispatch(failure(err))
+      })
+    }
     // setTimeout(() => {
     //   const recipe = recipeService.getRecipe(user, recipeId)
     //   dispatch(success(recipe))

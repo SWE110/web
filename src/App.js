@@ -35,7 +35,7 @@ class App extends Component {
 
             {/* View Recipes */}
             <Route exact path="/recipes" component={RecipePage} />
-            <Route exact path="/recipes/:id" component={RecipePage} />
+            <Route exact path="/recipes/:recipeId" component={RecipePage} />
 
             {/* Submit Recipe: Protected */}
             <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
