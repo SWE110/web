@@ -20,7 +20,8 @@ export function recipe(state = initialState, action) {
     }
   case recipeConstants.GET_FAILURE:
     return {
-
+      err: action.error,
+      msg: ''
     }
   default:
     return state

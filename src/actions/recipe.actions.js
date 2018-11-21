@@ -22,15 +22,20 @@ function getRecipe(user, recipeId) {
   return dispatch => {
     dispatch(request(user))
 
-    setTimeout(() => {
-      const recipe = recipeService.getRecipe(user, recipeId)
+    recipeService.getRecipe('7f6e80e40e404fc0a6a077a185f49600').then((recipe) => {
       dispatch(success(recipe))
-    }, 3000)
+    }).catch((err) => {
+      dispatch(failure(err))
+    })
+    // setTimeout(() => {
+    //   const recipe = recipeService.getRecipe(user, recipeId)
+    //   dispatch(success(recipe))
+    // }, 3000)
   }
     
   function request(recipe) { return { type: recipeConstants.GET_REQUEST, recipe } }
   function success(recipe) { return { type: recipeConstants.GET_SUCCESS, recipe } }
-  function failure(error) { return { type: recipeConstants.GET_FAILURE, user } }
+  function failure(error) { return { type: recipeConstants.GET_FAILURE, error } }
 }
 
 function createRecipe(user, recipe) {

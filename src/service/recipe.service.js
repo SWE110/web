@@ -1,4 +1,7 @@
 import { recipe } from './example'
+import request from 'request-promise'
+
+const ip = 'http://104.248.220.214:3000'
 
 export default {
   getRecipe,
@@ -11,8 +14,12 @@ function getRecipes(user) {
     
 }
 
-function getRecipe(user, recipeId) {
-  return recipe
+function getRecipe(recipeId) {
+  if (recipeId) {
+    return request(`${ip}/recipe/${recipeId}`).then((json) => {
+      return JSON.parse(json)
+    })
+  }
 }
 
 function createRecipe(user, recipe) {

@@ -17,6 +17,7 @@ import {
 
 import CreateRecipePage from './container/CreateRecipe'
 
+const ConfigPage = () => <div>{global.CONFIG}</div>
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
 
@@ -35,8 +36,7 @@ class App extends Component {
 
             {/* View Recipes */}
             <Route exact path="/recipes" component={RecipePage} />
-            <Route exact path="/recipes/:user" component={RecipePage} />
-            <Route exact path="/recipes/:user/:recipeId" component={RecipePage} />
+            <Route exact path="/recipes/:id" component={RecipePage} />
 
             {/* Submit Recipe: Protected */}
             <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
@@ -51,6 +51,7 @@ class App extends Component {
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/createRecipe" component={CreateRecipePage} />
             {/* Handle 404 */}
+            <Route exact path="/config" component={ConfigPage} />
             <Route component={NullPage} />
           </Switch>
         </Router>

@@ -37,27 +37,29 @@ class Recipe extends Component {
                 Ingredients
               </Card.Header.Title>
               <Card.Content>
-                {_.map(this.state.recipeIngredient, (item) => {
+                {_.map(this.state.recipe_ingredient, (item) => {
                   return <p>{item}</p>
                 })}
               </Card.Content>
             </Card>
+            {this.state.nutrition &&
             <Card className="info left">
               <Card.Header.Title>
                Nutrition Facts 
               </Card.Header.Title>
               <Card.Content>
-                {this.state.nutrition.calories}
+                {this.state.nutrition.calories || ''}
               </Card.Content>
             </Card>
+            }
           </div>
 
           <div>
-            {this.state.recipeInstructions.map((item) => {
+            {_.map(this.state.recipe_instructions, (item) => {
               return (
                 <Card className="steps">
                   <Card.Content>
-                    {item.text}
+                    {item}
                   </Card.Content>
                 </Card>
               )

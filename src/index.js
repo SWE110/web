@@ -6,6 +6,9 @@ import App from './App'
 import { store } from './store'
 import * as serviceWorker from './serviceWorker'
 
+import CONFIG from './config'
+global.CONFIG = CONFIG
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
