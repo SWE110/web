@@ -11,20 +11,29 @@ class SearchBar extends Component {
   constructor(props) {
     super(props)
     this.state = { searchTerm: 'Unchanged' }
+    // this.submitSearch = this.submitSearch.bind(this)
+    this.onKeyPress = this.onKeyPress.bind(this)
   }
+
   updateSearchTerm(e) {
     this.setState({ searchTerm: e.target.value })
-
   }
 
   submitSearch() {
     this.props.dispatch(recipeActions.getRecipeByWords(this.state.searchTerm))
   }
+
+  onKeyPress(e) {
+    if (e.keyCode === 13) {
+      this.submitSearch()
+    }
+  }
+  
   render() {
     return (
       <div className="field has-addons">
         <div className={this.props.size === 'expanded' ? 'control is-expanded' : 'control is-narrow'}>
-          <input className="input" type="search" onChange={(e) => this.updateSearchTerm(e)} placeholder="» » » » » » find me « « « « « «">
+          <input className="input" onKeyDown={this.onKeyPress} type="search" onChange={(e) => this.updateSearchTerm(e)} placeholder="» » » » » » find me « « « « « «">
           </input>
         </div>
         <div className="control">
