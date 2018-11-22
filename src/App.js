@@ -33,7 +33,7 @@ class App extends Component {
       <Router>
         <Switch>
           {/* Home */}
-          {/* <Route exact path="/" component={HomePage} /> */}
+          <Route exact path="/" component={HomePage} />
 
           {/* View Recipes */}
           <Route exact path="/recipes" component={RecipePage} />
