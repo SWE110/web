@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import 'bulma/css/bulma.css'
 import './App.css'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import SearchBar from './common/SearchBar'
 
 import { PrivateRoute } from './common'
 import { 
@@ -28,6 +29,7 @@ class App extends Component {
   render() {
     return (
       <div className="primary-layout">
+        <SearchBar size="small" />
         <Router>
           <Switch>
             {/* Home */}

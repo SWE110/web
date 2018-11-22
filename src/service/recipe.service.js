@@ -4,7 +4,12 @@ export default {
   getRecipe,
   getRecipes,
   createRecipe,
-  deleteRecipe    
+  deleteRecipe,
+  getRecipeByWords    
+}
+
+function getRecipeByWords(words) {
+  return recipe
 }
 
 function getRecipes(user) {

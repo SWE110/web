@@ -5,7 +5,26 @@ export const recipeActions = {
   getRecipes,
   getRecipe,
   createRecipe,
-  deleteRecipe
+  deleteRecipe,
+  getRecipeByWords
+}
+
+function getRecipeByWords(words) {
+  return dispatch => {
+    dispatch(request(words))
+    // #1
+    setTimeout(() => {
+      // Why inside of gettimeout? Shouldn't we put at #1 and put dispatch success
+      // And dispatch failure inside of some callback of getRecipeByWords?
+      const recipe = recipeService.getRecipeByWords(words)
+
+      dispatch(success(recipe))
+    }, 3000)
+  }
+
+  function request(words) { return { type: recipeConstants.GET_REQUEST, words } }
+  function success(recipe) { return { type: recipeConstants.GET_SUCCESS, recipe } }
+  function failure(words) { return { type: recipeConstants.GET_FAILURE, words } }
 }
 
 function getRecipes(user) {
