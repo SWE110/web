@@ -5,6 +5,7 @@ import Timer from './Timer'
 import TopButton from './TopButton'
 import Header from './Header'
 import Dropdown from './Dropdown'
+import SearchBar from './SearchBar'
 
 export {
   Header,
@@ -13,5 +14,6 @@ export {
   Profile,
   Timer,
   TopButton,
-  Dropdown
+  Dropdown,
+  SearchBar
 }

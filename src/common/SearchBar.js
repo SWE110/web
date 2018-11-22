@@ -4,6 +4,9 @@
 import React, { Component } from 'react'
 import { recipeActions } from '../actions'
 import { connect } from 'react-redux'
+
+import './SearchBar.scss'
+
 class SearchBar extends Component {
   constructor(props) {
     super(props)

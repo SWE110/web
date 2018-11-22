@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Profile } from './'
+import { Profile, SearchBar } from './'
 
 import './Header.scss'
 
@@ -18,8 +18,8 @@ export default class Header extends Component {
             <Link className="logo" to="/">
             yummy
             </Link>
+            <SearchBar size="large"/>
           </div>
-          {/* Search Bar */}
 
           {/* <div className="profile">
             Profile
