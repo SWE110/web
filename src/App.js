@@ -5,8 +5,8 @@ import './App.css'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 
 import { PrivateRoute } from './common'
-import { 
-  // HomePage,
+import {
+  HomePage,
   LoginPage, 
   ForgotPasswordPage, 
   RegistrationPage,
@@ -16,6 +16,7 @@ import {
 } from './container'
 
 import CreateRecipePage from './container/CreateRecipe'
+//import Body from './common/Body'
 
 const TodoPage = () => <div>Todo Page</div>
 const NullPage = () => <div>404 Page</div>
@@ -31,7 +32,7 @@ class App extends Component {
         <Router>
           <Switch>
             {/* Home */}
-            {/* <Route exact path="/" component={HomePage} /> */}
+            <Route exact path="/" component={HomePage} />
 
             {/* View Recipes */}
             <Route exact path="/recipes" component={RecipePage} />
@@ -50,6 +51,7 @@ class App extends Component {
             {/* Profile Page: Protected */}
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/createRecipe" component={CreateRecipePage} />
+
             {/* Handle 404 */}
             <Route component={NullPage} />
           </Switch>
