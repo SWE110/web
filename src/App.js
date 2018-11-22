@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import SearchBar from './common/SearchBar'
 
 import { PrivateRoute } from './common'
 import { 
