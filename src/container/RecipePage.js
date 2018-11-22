@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Recipe from '../recipe/Recipe'
 import { connect } from 'react-redux'
+import { Header } from '../common'
 
 import { recipeActions } from '../actions'
 
@@ -18,10 +19,15 @@ class RecipePage extends Component {
   render() {
     const { recipe } = this.props
     if (recipe.hasRecipe) {
-      return <Recipe recipe={recipe.recipe}/>
+      return (
+        <Recipe recipe={recipe.recipe}/>
+      )
     }
     return (
-      <div> Loading... </div>
+      <div> 
+        <Header />
+        Loading... 
+      </div>
     )
   }
 }

@@ -12,6 +12,7 @@ import {
   RegistrationConfirmationPage,
   ProfilePage,
   RecipePage,
+  RecipesPages,
 } from './container'
 
 import CreateRecipePage from './container/CreateRecipe'
@@ -27,34 +28,32 @@ class App extends Component {
 
   render() {
     return (
-      <div className="primary-layout">
-        <Router>
-          <Switch>
-            {/* Home */}
-            {/* <Route exact path="/" component={HomePage} /> */}
+      <Router>
+        <Switch>
+          {/* Home */}
+          {/* <Route exact path="/" component={HomePage} /> */}
 
-            {/* View Recipes */}
-            <Route exact path="/recipes" component={RecipePage} />
-            <Route exact path="/recipes/:recipeId" component={RecipePage} />
+          {/* View Recipes */}
+          <Route exact path="/recipes" component={RecipePage} />
+          <Route exact path="/recipes/:recipeId" component={RecipePage} />
 
-            {/* Submit Recipe: Protected */}
-            <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
+          {/* Submit Recipe: Protected */}
+          <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
 
-            {/* Login/Register/Reset Password/Logout */}
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/register" component={RegistrationPage} />
-            <Route exact path="/reset" component={TodoPage} />
-            <Route exact path="/logout" component={TodoPage} />
-            <Route exact path="/confirm" component={RegistrationConfirmationPage} />
-            {/* Profile Page: Protected */}
-            <Route exact path="/profile" component={ProfilePage} />
-            <Route exact path="/createRecipe" component={CreateRecipePage} />
-            {/* Handle 404 */}
-            <Route exact path="/config" component={ConfigPage} />
-            <Route component={NullPage} />
-          </Switch>
-        </Router>
-      </div>
+          {/* Login/Register/Reset Password/Logout */}
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegistrationPage} />
+          <Route exact path="/reset" component={TodoPage} />
+          <Route exact path="/logout" component={TodoPage} />
+          <Route exact path="/confirm" component={RegistrationConfirmationPage} />
+          {/* Profile Page: Protected */}
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/createRecipe" component={CreateRecipePage} />
+          {/* Handle 404 */}
+          <Route exact path="/config" component={ConfigPage} />
+          <Route component={NullPage} />
+        </Switch>
+      </Router>
     )
   }
 }
