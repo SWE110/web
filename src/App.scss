@@ -1,8 +1,11 @@
+@import "./_style/global.scss";
+
 body,
 html,
 .primary-layout {
   width: 100%;
   height: 100%;
+  color: $primary-color;
 }
 
 .center {
