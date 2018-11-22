@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import SearchBar from './common/SearchBar'
 
 import { PrivateRoute } from './common'
-import { 
-  // HomePage,
+import {
+  HomePage,
   LoginPage, 
   ForgotPasswordPage, 
   RegistrationPage,
@@ -17,6 +17,7 @@ import {
 } from './container'
 
 import CreateRecipePage from './container/CreateRecipe'
+//import Body from './common/Body'
 
 const ConfigPage = () => <div><pre>{JSON.stringify(global.CONFIG, null, 2)}</pre></div>
 const TodoPage = () => <div>Todo Page</div>

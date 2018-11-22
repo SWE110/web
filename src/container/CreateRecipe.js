@@ -43,14 +43,18 @@ class CreateRecipe extends Component {
       })
     }
 
-    handleRemoveIngredient = () => {
-
+    handleRemoveIngredient = (idx) => () => {
+      this.setState({
+        ingredients: this.state.ingredients.filter((s, inIdx) => idx !== inIdx)
+      })
     }
 
-    handleRemoveStep = () => {
 
+    handleRemoveStep = (idx) => () => {
+      this.setState({
+        steps: this.state.steps.filter((s, sIdx) => idx !== sIdx)
+      })
     }
-
     render() {
       return (
         <Container fluid id="primary-container">
@@ -99,6 +103,7 @@ class CreateRecipe extends Component {
               ))}
             </table>
             <Button onClick={this.handleAddStep}>Add Step</Button>
+            <Button onClick={this.handleMakeRecipe}> Make Recipe! </Button>
           </Box>
         </Container>
       )
