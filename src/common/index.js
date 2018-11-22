@@ -3,11 +3,17 @@ import PrivateRoute from './PrivateRoute'
 import Profile from './Profile'
 import Timer from './Timer'
 import TopButton from './TopButton'
+import Header from './Header'
+import Dropdown from './Dropdown'
+import SearchBar from './SearchBar'
 
 export {
+  Header,
   Clipboard,
   PrivateRoute,
   Profile,
   Timer,
-  TopButton
+  TopButton,
+  Dropdown,
+  SearchBar
 }
