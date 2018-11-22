@@ -5,6 +5,9 @@ import React, { Component } from 'react'
 import { recipeActions } from '../actions'
 import { connect } from 'react-redux'
 
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import './SearchBar.scss'
 
 class SearchBar extends Component {
@@ -31,13 +34,15 @@ class SearchBar extends Component {
   
   render() {
     return (
-      <div className="field has-addons">
-        <div className={this.props.size === 'expanded' ? 'control is-expanded' : 'control is-narrow'}>
-          <input className="input" onKeyDown={this.onKeyPress} type="search" onChange={(e) => this.updateSearchTerm(e)} placeholder="» » » » » » find me « « « « « «">
-          </input>
+      <div className="search-bar field has-addons">
+        <div className="search-button control">
+          <a className="button is-info" onClick={() => this.submitSearch()}>
+            <FontAwesomeIcon icon={faSearch} />
+          </a>
         </div>
-        <div className="control">
-          <a className="button is-info" onClick={() => this.submitSearch()}>Search</a>
+        <div className={this.props.size === 'expanded' ? 'control is-expanded' : 'control is-narrow'}>
+          <input className="search-field input" onKeyDown={this.onKeyPress} type="search" onChange={(e) => this.updateSearchTerm(e)} placeholder="» » » » » » find me « « « « « «">
+          </input>
         </div>
       </div>
     )
