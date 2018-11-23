@@ -33,13 +33,17 @@ class Body extends Component {
     }
     render() {
       return (
-        <Level className="body-width has-text-centered">
-          {this.state.dispRecipes.map((recipe, idx) => (
-            <RecipeItemAsBox imgUrl={recipe}/>
-          ))}
-          <p>{this.state.counter} </p>
-          <Button onClick={this.handleScrollRecipe}> scroll </Button>
-        </Level>
+        <span>
+          <h1 className="body-width has-text-left">Your recommended recipes</h1>
+          <div className="suggestion-bar">
+            <Level className="body-width has-text-centered">
+              {this.state.dispRecipes.map((recipe, idx) => (
+                <RecipeItemAsBox imgUrl={recipe}/>
+              ))}
+            </Level>
+            <Button className="suggestion-bar" onClick={this.handleScrollRecipe}> scroll </Button>
+          </div>
+        </span>
 
       )
     }

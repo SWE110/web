@@ -2,7 +2,7 @@
 import React, {Component} from 'react'
 
 import HomeBody from '../common/Body'
-
+import HomeHeader from '../common/Header'
 import { Link } from 'react-router-dom'
 import { Level } from 'reactbulma'
 
@@ -14,8 +14,11 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="has-text-centered">
-        <HomeBody/>
+
+      <div className="has-text-centered">>
+        <HomeHeader/>
+        <div  className="home-page-margin"/>
+        <HomeBody />
       </div>
     )
   }
