@@ -1,12 +1,6 @@
 import { recipeConstants } from '../_constants'
 
-const initialState = {
-  gettingRecipe: false,
-  hasRecipe: false,
-  recipe: {}
-}
-
-export function recipe(state = initialState, action) {
+export function recipe(state = {gettingRecipe: false, hasRecipe: false, recipe: {}}, action) {
   switch (action.type) {
   case recipeConstants.GET_REQUEST:
     return {
@@ -25,5 +19,25 @@ export function recipe(state = initialState, action) {
     }
   default:
     return state
+  }
+}
+
+export function recipes(state = {gettingRecipes: false, hasRecipes: false, recipes: {}}, action) {
+  switch (action.type) {
+  case recipeConstants.GET_ALL_REQUEST:
+    return {
+      gettingRecipes: true
+    }
+  case recipeConstants.GET_ALL_SUCCESS:
+    return {
+      hasRecipes: true,
+      gettingRecipes: false,
+      recipes: action.recipes
+    }
+  case recipeConstants.GET_ALL_FAILURE:
+    return {
+      err: action.error
+    }
+  default: return state
   }
 }
