@@ -12,13 +12,16 @@ export const recipeActions = {
 function getRecipeByTitle(words) {
   return dispatch => {
     dispatch(request(words))
-    recipeService.getRecipeByTitle(words).then(recipe => dispatch(success(recipe)))
+    recipeService.getRecipeByTitle(words)
+      .then(recipe => dispatch(success(recipe)))
+      .catch(error => dispatch(failure(error)))
   }
 
-  function request(words) { return { type: recipeConstants.GET_REQUEST, words } }
-  function success(recipe) { return { type: recipeConstants.GET_SUCCESS, recipe } }
-  function failure(words) { return { type: recipeConstants.GET_FAILURE, words } }
+  function request(words) { return { type: recipeConstants.GET_ALL_REQUEST, words } }
+  function success(recipes) { return { type: recipeConstants.GET_ALL_SUCCESS, recipes } }
+  function failure(words) { return { type: recipeConstants.GET_ALL_FAILURE, words } }
 }
+
 function getRecipes() {
   return dispatch => {
     dispatch(request())
