@@ -8,10 +8,10 @@ const RecipeListing = (props) => {
   return (
     <div className="recipe-box">
       <div className="card-image">
-        <a href={'recipes/' + props.onClickUrl}><img src={props.recipe.image[0]} /></a>
+        <a href={props.onClickUrl}><img src={props.recipe.image[0]} /></a>
       </div>
       <div className="recipe-title">
-        <a href={'recipes/' + props.onClickUrl}>{props.recipe.name}</a>
+        <a href={props.onClickUrl}>{props.recipe.name}</a>
       </div>
       <div>Posted by {props.recipe.author}</div>
 
