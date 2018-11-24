@@ -33,7 +33,7 @@ class LoginPage extends Component {
         <Box>
           <Hero>
             <Hero.Body>
-              <Title>
+              <Title className="center">
                 Login
               </Title>
             </Hero.Body>

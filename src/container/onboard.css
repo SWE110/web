@@ -1,9 +1,13 @@
 #primary-container {
     padding-top: 5%;
     width: 50%;
-    margin: auto;
+    margin-right:auto;
+    margin-left:auto;
 }
 
+.title{
+    width:50%;
+}
 #notify {
     /* display: none; */
     min-height: 40px;
@@ -74,4 +78,12 @@
 
 .step-table {
     width:100%;
+}
+
+.make-recipe-margin {
+    margin-top: 5%;
+}
+
+.center{
+    width: auto !important;
 }

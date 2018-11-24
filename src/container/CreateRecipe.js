@@ -17,18 +17,12 @@ class CreateRecipe extends Component {
       steps: [{ stepDesc: ''}],
       notify: false
     }
-    this.handleLogin = this.handleLogin.bind(this)
+
   }
 
-  handleLogin() {
-    this.setState(state => ({
-      notify: !state.notify
-    }))
-    setTimeout(() => {
-      this.setState(state => ({
-        notify: false
-      }))
-    }, 1000)
+
+  handleMakeRecipe = () => {
+
   }
 
     handleAddStep = () => {
@@ -58,24 +52,22 @@ class CreateRecipe extends Component {
     render() {
       return (
         <Container fluid id="primary-container">
-          <Title> Create New Recipe</Title>
-          <Box className>
+          <Title className="center"> Create New Recipe</Title>
+          <Box>
             <SubTitle>Recipe Name</SubTitle>
             <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="recipeName"></input>
 
-            <SubTitle>Description</SubTitle>
+            <SubTitle className="make-recipe-margin">Description</SubTitle>
             <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Description"></input>
 
-            <SubTitle>
-                  Ingredients
-            </SubTitle>
+            <SubTitle className="make-recipe-margin">Ingredients</SubTitle>
             <table className="step-table">
               {this.state.ingredients.map((ingredient, idx) => (
                 <tr className="margin">
                   <td>
                     <input className="input margin ingredient-input" type="text" placeholder={`Ingredient #${idx + 1}`} id="Ingredient"></input>
                   </td>
-                  <td>
+                  <td className="has-text-center">
                     <Button className="ingredient-button" onClick={this.handleRemoveIngredient(idx)}>
                             Remove Ingredient
                     </Button>
@@ -85,10 +77,10 @@ class CreateRecipe extends Component {
             </table>
             <Button onClick={this.handleAddIngredient}>Add Ingredient</Button>
 
-            <SubTitle>Nutrition Facts</SubTitle>
+            <SubTitle className="make-recipe-margin">Nutrition Facts</SubTitle>
             <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Nutrition"></input>
 
-            <SubTitle>Instructions</SubTitle>
+            <SubTitle className="make-recipe-margin">Instructions</SubTitle>
             <table className="step-table">
               {this.state.steps.map((step, idx) => (
                 <tr className="margin">
@@ -96,7 +88,7 @@ class CreateRecipe extends Component {
                   <td className="step-input">
                     <input className="input" type="text" placeholder={`Step #${idx + 1}`} id="Step"></input>
                   </td>
-                  <td>
+                  <td className="has-text-center">
                     <Button onClick={this.handleRemoveStep(idx)}>Remove Step</Button>
                   </td>
                 </tr>

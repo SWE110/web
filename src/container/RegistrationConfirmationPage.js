@@ -31,9 +31,9 @@ class RegistrationConfirmationPage extends Component {
             <Container fluid id="primary-container" >
 
                     <div class= "has-text-centered">
-                        <Title class= "title is -6 is-spaced has-text-centered">
+                        <h1 className= "title is-spaced center">
                             Thank you for registering. Please verify your account.
-                        </Title>
+                        </h1>
                     </div>
 
                     <div class="subtitle is -3 has-text-centered">

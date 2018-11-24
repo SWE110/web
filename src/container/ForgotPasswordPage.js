@@ -32,7 +32,7 @@ class ForgotPasswordPage extends Component {
         <Box>
           <Hero>
             <Hero.Body>
-              <Title>
+              <Title className="center">
                 Forgot Password
               </Title>
             </Hero.Body>
