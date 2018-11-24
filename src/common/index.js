@@ -6,6 +6,7 @@ import TopButton from './TopButton'
 import Header from './Header'
 import Dropdown from './Dropdown'
 import SearchBar from './SearchBar'
+import RecipeListing from './RecipeListing'
 
 export {
   Header,
@@ -15,5 +16,6 @@ export {
   Timer,
   TopButton,
   Dropdown,
-  SearchBar
+  SearchBar,
+  RecipeListing
 }

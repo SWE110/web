@@ -63,4 +63,9 @@ body {
   .lowercase {
     text-transform: lowercase !important;
   }
+
+  .main {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
 }

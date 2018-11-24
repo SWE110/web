@@ -13,7 +13,7 @@ import {
   RegistrationConfirmationPage,
   ProfilePage,
   RecipePage,
-  RecipesPages,
+  RecipesPage,
 } from './container'
 
 import CreateRecipePage from './container/CreateRecipe'
@@ -36,7 +36,7 @@ class App extends Component {
           <Route exact path="/" component={HomePage} />
 
           {/* View Recipes */}
-          <Route exact path="/recipes" component={RecipePage} />
+          <Route exact path="/recipes" component={RecipesPage} />
           <Route exact path="/recipes/:recipeId" component={RecipePage} />
 
           {/* Submit Recipe: Protected */}
