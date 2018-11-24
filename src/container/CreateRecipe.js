@@ -54,48 +54,61 @@ class CreateRecipe extends Component {
         <Container fluid id="primary-container">
           <Title className="center"> Create New Recipe</Title>
           <Box>
-            <SubTitle>Recipe Name</SubTitle>
-            <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="recipeName"></input>
+            <div className="make-recipe-margin">
+              <SubTitle>Recipe Name</SubTitle>
+              <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="recipeName"></input>
+            </div>
 
-            <SubTitle className="make-recipe-margin">Description</SubTitle>
-            <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Description"></input>
+            <div className="make-recipe-margin">
+              <SubTitle >Description</SubTitle>
+              <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Description"></input>
+            </div>
 
-            <SubTitle className="make-recipe-margin">Ingredients</SubTitle>
-            <table className="step-table">
-              {this.state.ingredients.map((ingredient, idx) => (
-                <tr className="margin">
-                  <td>
-                    <input className="input margin ingredient-input" type="text" placeholder={`Ingredient #${idx + 1}`} id="Ingredient"></input>
-                  </td>
-                  <td className="has-text-center">
-                    <Button className="ingredient-button" onClick={this.handleRemoveIngredient(idx)}>
+            <div className="make-recipe-margin">
+              <SubTitle className="make-recipe-margin">Ingredients</SubTitle>
+              <table className="step-table">
+                {this.state.ingredients.map((ingredient, idx) => (
+                  <tr className="margin">
+                    <td>
+                      <input className="input margin ingredient-input" type="text" placeholder={`Ingredient #${idx + 1}`} id="Ingredient"></input>
+                    </td>
+                    <td className="has-text-center">
+                      <Button className="ingredient-button" onClick={this.handleRemoveIngredient(idx)}>
                             Remove Ingredient
-                    </Button>
-                  </td>
-                </tr>
-              ))}
-            </table>
-            <Button onClick={this.handleAddIngredient}>Add Ingredient</Button>
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+              <Button onClick={this.handleAddIngredient}>Add Ingredient</Button>
+            </div>
 
-            <SubTitle className="make-recipe-margin">Nutrition Facts</SubTitle>
-            <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Nutrition"></input>
+            <div className="make-recipe-margin">
+              <SubTitle>Nutrition Facts</SubTitle>
+              <input className="input margin" type="text" placeholder="Insert the name of your recipe" id="Nutrition"></input>
+            </div>
 
-            <SubTitle className="make-recipe-margin">Instructions</SubTitle>
-            <table className="step-table">
-              {this.state.steps.map((step, idx) => (
-                <tr className="margin">
-                  <th className="step-numbering margin"> {idx + 1} </th>
-                  <td className="step-input">
-                    <input className="input" type="text" placeholder={`Step #${idx + 1}`} id="Step"></input>
-                  </td>
-                  <td className="has-text-center">
-                    <Button onClick={this.handleRemoveStep(idx)}>Remove Step</Button>
-                  </td>
-                </tr>
-              ))}
-            </table>
-            <Button onClick={this.handleAddStep}>Add Step</Button>
-            <Button onClick={this.handleMakeRecipe}> Make Recipe! </Button>
+            <div className="make-recipe-margin">
+              <SubTitle>Instructions</SubTitle>
+              <table className="step-table">
+                {this.state.steps.map((step, idx) => (
+                  <tr className="margin">
+                    <th className="step-numbering margin"> {idx + 1} </th>
+                    <td className="step-input">
+                      <input className="input" type="text" placeholder={`Step #${idx + 1}`} id="Step"></input>
+                    </td>
+                    <td className="has-text-center">
+                      <Button className="margin" onClick={this.handleRemoveStep(idx)}>Remove Step</Button>
+                    </td>
+                  </tr>
+                ))}
+              </table>
+              <Button onClick={this.handleAddStep}>Add Step</Button>
+            </div>
+
+            <div className="create-recipe-button-div">
+              <Button className="is-large create-recipe-button "  onClick={this.handleMakeRecipe}> Make Recipe! </Button>
+            </div>
           </Box>
         </Container>
       )

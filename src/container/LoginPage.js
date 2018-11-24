@@ -52,7 +52,8 @@ class LoginPage extends Component {
           <div className="spacing-base">
             <label className="bold" htmlFor="medium">
               Password
-              <Link to="/reset" className="float-right">Forgot Password</Link>
+              <span className="has-text-link"> <Link to="/reset" >Forgot Password</Link> </span>
+
             </label>
             <Input medium id="medium"/>
           </div>
