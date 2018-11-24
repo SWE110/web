@@ -18,15 +18,18 @@ class RecipePage extends Component {
 
   render() {
     const { recipe } = this.props
-    if (recipe.hasRecipe) {
-      return (
-        <Recipe recipe={recipe.recipe}/>
-      )
-    }
+
     return (
       <div> 
         <Header />
-        Loading... 
+        <div className="main recipe-container">
+          {recipe.hasRecipe &&
+          <Recipe recipe={recipe.recipe}/>
+          }
+          {!recipe.hasRecipe &&
+          <div>Loading...</div>
+          }
+        </div>
       </div>
     )
   }
