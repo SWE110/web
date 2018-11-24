@@ -19,14 +19,17 @@ function getRecipeByTitle(words) {
   function success(recipe) { return { type: recipeConstants.GET_SUCCESS, recipe } }
   function failure(words) { return { type: recipeConstants.GET_FAILURE, words } }
 }
-function getRecipes(user) {
+function getRecipes() {
   return dispatch => {
-    dispatch(request(user))
+    dispatch(request())
+    recipeService.getRecipes()
+      .then(recipes => dispatch(success(recipes)))
+      .catch((err) => dispatch(failure(err)))
   }
     
-  function request(user) { return { type: recipeConstants.GET_ALL_REQUEST, user } }
-  function success(user) { return { type: recipeConstants.GET_ALL_SUCCESS, user } }
-  function failure(error) { return { type: recipeConstants.GET_ALL_FAILURE, user } }
+  function request() { return { type: recipeConstants.GET_ALL_REQUEST } }
+  function success(recipes) { return { type: recipeConstants.GET_ALL_SUCCESS, recipes } }
+  function failure(error) { return { type: recipeConstants.GET_ALL_FAILURE, error } }
 }
 
 function getRecipe(recipeId) {
@@ -35,16 +38,10 @@ function getRecipe(recipeId) {
     if (!recipeId) {
       dispatch(failure('Empty ID'))
     } else {
-      recipeService.getRecipe(recipeId).then((recipe) => {
-        dispatch(success(recipe))
-      }).catch((err) => {
-        dispatch(failure(err))
-      })
+      recipeService.getRecipe(recipeId)
+        .then((recipe) => dispatch(success(recipe)))
+        .catch((err) => dispatch(failure(err)))
     }
-    // setTimeout(() => {
-    //   const recipe = recipeService.getRecipe(user, recipeId)
-    //   dispatch(success(recipe))
-    // }, 3000)
   }
     
   function request(recipe) { return { type: recipeConstants.GET_REQUEST, recipe } }

@@ -25,8 +25,8 @@ function getRecipeByTitle(words) {
     .then(data => {return data})
 }
 
-function getRecipes(user) {
-    
+function getRecipes() {
+  return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe`).then((json) => JSON.parse(json))
 }
 
 function getRecipe(recipeId) {

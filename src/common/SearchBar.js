@@ -23,7 +23,7 @@ class SearchBar extends Component {
   }
 
   submitSearch() {
-    this.props.dispatch(recipeActions.getRecipeByWords(this.state.searchTerm))
+    this.props.dispatch(recipeActions.getRecipeByTitle(this.state.searchTerm))
   }
 
   onKeyPress(e) {
