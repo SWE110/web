@@ -33,7 +33,7 @@ class RegistrationPage extends Component {
                 <Box>
                     <Hero>
                         <Hero.Body>
-                            <Title>
+                            <Title className="center">
                                 Create an Account
                             </Title>
                         </Hero.Body>
