@@ -1,21 +1,27 @@
 /* eslint-disable linebreak-style,linebreak-style */
 import React, {Component} from 'react'
 
-import { Header, SearchBar }from '../common/'
+import { Header, SearchBar, RecipeListing }from '../common/'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import _ from 'underscore'
 
 import { faJedi } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'reactbulma'
+import { recipeActions } from '../actions'
 
 import './HomePage.scss'
+import './RecipesPage.scss'
 
 class HomePage extends Component {
   constructor(props) {
     super(props)
+    this.props.dispatch(recipeActions.getRecipes())
   }
 
   render() {
+    const { recipes } = this.props
     return (
       <div>
         <div className="home-container">
@@ -44,13 +50,28 @@ class HomePage extends Component {
 
           </div>
         </div>
-        <div>
-          {/* Todo recommendations */}
+        <div className="home-body">
+          <h1>Recommendations for you!</h1>
+          <div className="recipe-container">
+            {recipes.hasRecipes &&
+              _.map(recipes.recipes, (recipe, id) => {
+                if (id < 3) {
+                  return <RecipeListing key={id} onClickUrl={`recipes/${recipe.meal_id}`} recipe={recipes.recipes[id]} />
+                }
+              })
+            }
+          </div>
         </div>
       </div>
     )
   }
-
 }
 
-export default HomePage
+function mapStateToProps(state) {
+  const { recipes } = state
+  return {
+    recipes
+  }
+}
+
+export default connect(mapStateToProps)(HomePage)
