@@ -10,12 +10,13 @@ import './RecipesPage.scss'
 class RecipesPage extends Component {
   constructor(props) {
     super(props)
-    const { recipeId } = props.match.params
-    this.state = {
-      recipeId
-    }
+  }
 
-    this.props.dispatch(recipeActions.getRecipes())
+  componentWillMount() {
+    const { recipes } = this.props
+    if (!recipes.hasRecipes && !recipes.gettingRecipes) {
+      this.props.dispatch(recipeActions.getRecipes())
+    }
   }
 
   render() {
@@ -27,7 +28,8 @@ class RecipesPage extends Component {
         <div className="main recipe-container">
           {recipes.hasRecipes &&
           _.map(recipes.recipes, (recipe, id) => {
-            return <RecipeListing onClickUrl={recipe.meal_id} key={id} recipe={recipe}/>
+            const url = `recipes/${recipe.meal_id}`
+            return <RecipeListing onClickUrl={url} key={id} recipe={recipe}/>
           })
           }
           {!recipes.hasRecipes &&

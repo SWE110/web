@@ -2,7 +2,8 @@
 // size = "expanded" or "narrow"
 
 import React, { Component } from 'react'
-import { recipeActions } from '../actions'
+import { withRouter } from 'react-router-dom'
+import { queryActions, recipeActions } from '../actions'
 import { connect } from 'react-redux'
 
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -19,11 +20,19 @@ class SearchBar extends Component {
   }
 
   updateSearchTerm(e) {
-    this.setState({ searchTerm: e.target.value })
+    const searchTerm = e.target.value
+    this.props.dispatch(queryActions.query(searchTerm))
   }
 
   submitSearch() {
-    this.props.dispatch(recipeActions.getRecipeByTitle(this.state.searchTerm))
+    const { query } = this.props
+    const word = query.word || ''
+    this.props.history.push('/recipes')
+    if (word && word !== 'Unchanged') {
+      this.props.dispatch(recipeActions.getRecipeByTitle(word))
+    } else {
+      this.props.dispatch(recipeActions.getRecipes())
+    }
   }
 
   onKeyPress(e) {
@@ -33,6 +42,7 @@ class SearchBar extends Component {
   }
   
   render() {
+    const { query } = this.props
     return (
       <div className="search-bar field has-addons">
         <div className="search-button control">
@@ -41,19 +51,25 @@ class SearchBar extends Component {
           </a>
         </div>
         <div className={this.props.size === 'expanded' ? 'control is-expanded' : 'control is-narrow'}>
-          <input className="search-field input" onKeyDown={this.onKeyPress} type="search" onChange={(e) => this.updateSearchTerm(e)} placeholder="» » » » » » find me « « « « « «">
-          </input>
+          <input 
+            className="search-field input" 
+            onKeyDown={this.onKeyPress}
+            type="search" onChange={(e) => this.updateSearchTerm(e)} 
+            placeholder="Recipe Name or Ingredients"
+            value={query.word}
+          ></input>
         </div>
       </div>
     )
   }
 }
 function mapStateToProps(state) {
-  const { recipe } = state
+  const { recipe, query } = state
   return {
-    recipe
+    recipe,
+    query
   }
 }
 
-export default connect(mapStateToProps)(SearchBar)
+export default withRouter(connect(mapStateToProps)(SearchBar))
 // export default SearchBar;

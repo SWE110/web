@@ -1,6 +1,5 @@
 import { recipe } from './example'
 import request from 'request-promise'
-const SEARCH_URL = 'http://104.248.220.214:3000/search'
 
 export default {
   getRecipe,
@@ -11,18 +10,18 @@ export default {
 }
 
 function getRecipeByTitle(words) {
-  return fetch(SEARCH_URL, {
+  const uri = `${global.CONFIG.BACKEND.ADDRESS}/search`
+  return request({
     method: 'post',
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    uri,
     body: JSON.stringify({
       title: words
-    })
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
-    .catch(err => console.log('Error with search request to server'))
-    .then(resp => resp.json())
-    .then(data => {return data})
+    .then((json) => JSON.parse(json))
 }
 
 function getRecipes() {

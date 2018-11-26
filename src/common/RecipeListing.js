@@ -1,17 +1,16 @@
 import React from 'react'
 import ReactStars from 'react-stars'
 import './RecipeListing.scss'
-
-import { Link } from 'reactbulma'
+import { Link } from 'react-router-dom'
 
 const RecipeListing = (props) => {
   return (
     <div className="recipe-box">
       <div className="card-image">
-        <a href={props.onClickUrl}><img src={props.recipe.image[0]} /></a>
+        <Link to={props.onClickUrl}><img src={props.recipe.image[0]} /></Link>
       </div>
       <div className="recipe-title">
-        <a href={props.onClickUrl}>{props.recipe.name}</a>
+        <Link to={props.onClickUrl}>{props.recipe.name}</Link>
       </div>
       <div>Posted by {props.recipe.author}</div>
 

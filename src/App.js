@@ -1,7 +1,11 @@
 /* eslint-disable linebreak-style */
 import React, { Component } from 'react'
 import './App.scss'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, 
+  Route, 
+  withRouter,
+  Link, 
+  Switch } from 'react-router-dom'
 import SearchBar from './common/SearchBar'
 
 import { PrivateRoute } from './common'
