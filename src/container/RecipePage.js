@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Header } from '../common'
 
 import { recipeActions } from '../actions'
+import './RecipePage.scss'
 
 class RecipePage extends Component {
   constructor(props) {
