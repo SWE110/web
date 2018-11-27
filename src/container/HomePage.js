@@ -29,7 +29,7 @@ class HomePage extends Component {
           <div className="home-header">
             <div className="spacing"></div>
             <div className="links">
-              <Link className="link" to="/login">Login</Link>
+              {this.props.users.loggedIn ? <Link className="link" to="/">{this.props.users.username}</Link> : <Link className="link" to="/login">Login</Link>}
               <Link className="link" to="/register">Register</Link>
             </div>
           </div>
@@ -68,9 +68,10 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { recipes } = state
+  const { recipes, users } = state
   return {
-    recipes
+    recipes,
+    users,
   }
 }
 
