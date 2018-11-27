@@ -5,5 +5,5 @@ import { recipe, recipes } from './recipe.reducer'
 import { query } from './query.reducer'
 
 export default combineReducers({
-  recipe, recipes, query
+  recipe, recipes, query, users
 })
