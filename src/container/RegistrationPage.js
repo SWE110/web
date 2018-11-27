@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 import { Container, Box, Hero, Title, Input, Button, Notification, Field } from 'reactbulma'
-
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { userActions } from '../actions'
 import './onboard.css'
 
 class RegistrationPage extends Component {
@@ -41,7 +43,7 @@ class RegistrationPage extends Component {
             }))
         }, 1000)
 
-        let userpackage = {
+        let registrationpackage = {
             username: this.state.username,
             password: this.state.password1,
             email: this.state.email,
@@ -52,23 +54,10 @@ class RegistrationPage extends Component {
 
         }
 
-        // This is a one off event, sue me for not using redux! :P
-        fetch('http://104.248.220.214:3000/user/create', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userpackage)
-        })
+        this.props.dispatch(userActions.userRegister(registrationpackage))
 
-        // How can I access the res.status from outside this function? As you see, setState below doesn't work.
-            .then(res => { console.log(res.status); return res.json() })
-            .then(res => {
-                console.log('response from server is: ', res)
-                ////////The below doesn't work. Scope issue?
-                // this.setState({notify: true, notify_text: res});
-            })
+        // This is a one off event, sue me for not using redux! :P
+        
 
 
     }
@@ -179,8 +168,8 @@ class RegistrationPage extends Component {
                     </Hero>
 
                     <div className="notify spacing-base">
-                        {this.state.notify ?
-                            <Notification danger id="notify">{this.state.notify_text}</Notification> :
+                        {this.props.users.registerFailed ?
+                            <Notification danger id="notify">{this.props.users.registerError}</Notification> :
                             ''}
                     </div>
 
@@ -224,14 +213,22 @@ class RegistrationPage extends Component {
                     <div>
                         <br></br>
                         <Link to="/reset" className="float-right">Already have an account?</Link>
+                        {this.props.users.registered ? this.props.history.push('/login') : ''}
                     </div>
 
                 </Box>
             </Container>
+            
         )
     }
 }
 
-export default RegistrationPage
+//export default RegistrationPage
 
-
+function mapStateToProps(state) {
+    const { users } = state
+    return {
+      users
+    }
+  }
+  export default withRouter(connect(mapStateToProps)(RegistrationPage))

@@ -33,7 +33,25 @@ function logout() {
 
 }
 
-function register() {
+function register(registrationpackage) {
+
+  const uri = `${global.CONFIG.BACKEND.ADDRESS}/user/create`
+  return fetch(uri, {
+    method: 'post',
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(registrationpackage)
+  })
+
+  // // How can I access the res.status from outside this function? As you see, setState below doesn't work.
+  //     .then(res => { console.log(res.status); return res.json() })
+  //     .then(res => {
+  //         console.log('response from server is: ', res)
+  //         ////////The below doesn't work. Scope issue?
+  //         // this.setState({notify: true, notify_text: res});
+  //     })
 
 }
 

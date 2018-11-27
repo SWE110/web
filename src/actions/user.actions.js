@@ -42,6 +42,28 @@ function userLogin(data) {
 }
 function userRegister(data) {
   // Do things
+
+  return dispatch => {
+    dispatch(request(data))
+    userService.register(data)
+      .then(res => { // TODO change
+        console.log('Recieved status code from login of ', res.status)
+        if (res.status == 200) {
+          // console.log('dispatching login success');
+          dispatch(success(data))
+        }
+        else if (res.status == 400) {
+          // console.log('dispatching login failure')
+          data.registerError = 'Username or Email already exists'
+          dispatch(failure(data))
+        }
+      })
+      .catch(error => {
+        console.log('Error registering in, dispatching error, error is ', error)
+        dispatch(failure(data))
+      })
+  }
+
   function request(data) { return { type: userConstants.REGISTER_REQUEST, data } }
   function success(data) { return { type: userConstants.REGISTER_SUCCESS, data } }
   function failure(data) { return { type: userConstants.REGISTER_FAILURE, data } }
