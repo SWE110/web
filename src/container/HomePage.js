@@ -20,8 +20,13 @@ class HomePage extends Component {
     this.props.dispatch(recipeActions.getRecipes())
   }
 
+  logout(e){
+    localStorage.clear()
+  }
+
   render() {
     const { recipes } = this.props
+    const loggedIn = localStorage.loggedIn
     return (
       <div>
         <div className="home-container">
@@ -29,8 +34,8 @@ class HomePage extends Component {
           <div className="home-header">
             <div className="spacing"></div>
             <div className="links">
-              {this.props.users.loggedIn ? <Link className="link" to="/">{this.props.users.username}</Link> : <Link className="link" to="/login">Login</Link>}
-              <Link className="link" to="/register">Register</Link>
+              {loggedIn ? <Link className="link" to="/">{localStorage.getItem('username')}</Link> : <Link className="link" to="/login">Login</Link>}
+              {loggedIn ? <Link className="link" onClick={(e) => this.logout(e)} to="/">Logout</Link> : <Link className="link" to="/register">Register</Link>}
             </div>
           </div>
           <div className="main home">

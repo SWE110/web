@@ -1,5 +1,6 @@
 import { userService } from '../service'
 import { userConstants } from '../_constants'
+import { faTable } from '@fortawesome/free-solid-svg-icons'
 
 export const userActions = {
   userLogin,
@@ -22,6 +23,10 @@ function userLogin(data) {
         console.log('Recieved status code from login of ', statuscode)
         if (statuscode == 200) {
           // console.log('dispatching login success');
+          localStorage.setItem('loggedIn','true')
+          localStorage.setItem('username', data.username)
+          localStorage.setItem('authstring', data.authstring)
+          console.log('set localstorage login of ', data.username)
           dispatch(success(data))
         }
         else if (statuscode == 401) {

@@ -17,7 +17,8 @@ function login(userpackage) {
       'Authorization': 'Basic ' + authstring
     }
   })
-    .then((res) => {return res.statusCode})
+    .then((res) => {
+      return res.statusCode})
 
 
 
