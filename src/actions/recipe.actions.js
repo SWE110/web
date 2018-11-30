@@ -4,31 +4,29 @@ import { recipeConstants } from '../_constants'
 export const recipeActions = {
   getRecipes,
   getRecipe,
-  getMoreRecipes,
   createRecipe,
   deleteRecipe,
-  getRecipeByTitle
-}
-
-function getRecipeByTitle(words) {
-  return dispatch => {
-    dispatch(request(words))
-    recipeService.getRecipeByTitle(words)
-      .then(recipe => dispatch(success(recipe)))
-      .catch(error => dispatch(failure(error)))
-  }
-
-  function request(words) { return { type: recipeConstants.GET_ALL_REQUEST, words } }
-  function success(recipes) { return { type: recipeConstants.GET_ALL_SUCCESS, recipes } }
-  function failure(words) { return { type: recipeConstants.GET_ALL_FAILURE, words } }
+  getMoreRecipes
 }
 
 function getRecipes(obj) {
+  let word, start, count
+  if (obj)  {
+    word = obj.word
+    start = obj.start || 0
+    count = obj.count || 6
+  }
   return dispatch => {
     dispatch(request())
-    recipeService.getRecipes(obj)
-      .then(recipes => dispatch(success(recipes)))
-      .catch((err) => dispatch(failure(err)))
+    if (word) {
+      recipeService.getRecipeByTitle(word, start, count)
+        .then(recipe => dispatch(success(recipe)))
+        .catch(error => dispatch(failure(error)))
+    } else {
+      recipeService.getRecipes(obj)
+        .then(recipes => dispatch(success(recipes)))
+        .catch((err) => dispatch(failure(err)))
+    }
   }
     
   function request() { return { type: recipeConstants.GET_ALL_REQUEST } }
@@ -37,11 +35,24 @@ function getRecipes(obj) {
 }
 
 function getMoreRecipes(obj) {
+  let word, start, count
+  if (obj)  {
+    word = obj.words
+    start = obj.start || 0
+    count = obj.count || 6
+  }
   return dispatch => {
     dispatch(request())
-    recipeService.getRecipes(obj)
-      .then(recipes => dispatch(success(recipes)))
-      .catch((err) => dispatch(failure(err)))
+    if (word) {
+      console.log('test')
+      recipeService.getRecipeByTitle(word, start, count)
+        .then(recipe => dispatch(success(recipe)))
+        .catch(error => dispatch(failure(error)))
+    } else {
+      recipeService.getRecipes(obj)
+        .then(recipes => dispatch(success(recipes)))
+        .catch((err) => dispatch(failure(err)))
+    }
   }
     
   function request() { return { type: recipeConstants.GET_MORE_REQUEST } }

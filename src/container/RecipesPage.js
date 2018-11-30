@@ -13,8 +13,7 @@ class RecipesPage extends Component {
 
     this.state = {
       start: 0,
-      count: 6,
-      listening: false
+      count: 6
     }
   }
 
@@ -30,19 +29,14 @@ class RecipesPage extends Component {
   }
 
   componentDidMount() {
-    const { query } = this.props
-    if (query && !query.word) {
-      window.addEventListener('scroll', this.handleScroll)
-      this.setState({
-        listening: true
-      })
-    }
+    window.addEventListener('scroll', this.handleScroll)
+    this.setState({
+      listening: true
+    })
   }
 
   componentWillUnmount() {
-    const { listening } = this.state
-    if (listening)
-      window.removeEventListener('scroll', this.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 
   // https://hashnode.com/post/how-to-get-scroll-position-in-reactjs-to-add-class-or-style-on-the-whole-page-cj0i3io6100c04o53hsxyxtjb
@@ -63,16 +57,16 @@ class RecipesPage extends Component {
   };
 
   load = () => {
-    const { recipes } = this.props
+    const { query, recipes } = this.props
+    const word = query ? query.word : ''
     if (!recipes.gettingRecipes) {
-      this.props.dispatch(recipeActions.getMoreRecipes({start: this.state.start, count: this.state.count}))
+      this.props.dispatch(recipeActions.getMoreRecipes({word, start: this.state.start, count: this.state.count}))
       this.setState({
         start: this.state.count,
         count: this.state.count + 6
       })
     }
   }
-
 
   render() {
     const { recipes } = this.props
@@ -99,9 +93,10 @@ class RecipesPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { recipes } = state
+  const { recipes, query } = state
   return {
-    recipes
+    recipes,
+    query
   }
 }
 

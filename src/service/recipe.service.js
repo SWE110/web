@@ -9,13 +9,16 @@ export default {
   getRecipeByTitle    
 }
 
-function getRecipeByTitle(words) {
+function getRecipeByTitle(words, start, count) {
   const uri = `${global.CONFIG.BACKEND.ADDRESS}/search`
+  console.log(words, start, count)
   return request({
     method: 'post',
     uri,
     body: JSON.stringify({
-      title: words
+      title: words,
+      start,
+      count
     }),
     headers: {
       'Content-Type': 'application/json'
@@ -25,11 +28,13 @@ function getRecipeByTitle(words) {
 }
 
 function getRecipes(obj) {
+  let start, count
   if (obj) {
-    return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe?start=${obj.start}&count=${obj.count}`).then((json) => JSON.parse(json))
-  } else {
-    return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe`).then((json) => JSON.parse(json))
+    start = obj.start || 0
+    count = obj.count || 6
   }
+  return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe?start=${start}&count=${count}`).then((json) => JSON.parse(json))
+
 }
 
 function getRecipe(recipeId) {

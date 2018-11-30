@@ -28,11 +28,7 @@ class SearchBar extends Component {
     const { query } = this.props
     const word = query.word || ''
     this.props.history.push('/recipes')
-    if (word && word !== 'Unchanged') {
-      this.props.dispatch(recipeActions.getRecipeByTitle(word))
-    } else {
-      this.props.dispatch(recipeActions.getRecipes())
-    }
+    this.props.dispatch(recipeActions.getRecipes({ word }))
   }
 
   onKeyPress(e) {
