@@ -37,14 +37,13 @@ function getRecipes(obj) {
 function getMoreRecipes(obj) {
   let word, start, count
   if (obj)  {
-    word = obj.words
+    word = obj.word
     start = obj.start || 0
     count = obj.count || 6
   }
   return dispatch => {
     dispatch(request())
     if (word) {
-      console.log('test')
       recipeService.getRecipeByTitle(word, start, count)
         .then(recipe => dispatch(success(recipe)))
         .catch(error => dispatch(failure(error)))
