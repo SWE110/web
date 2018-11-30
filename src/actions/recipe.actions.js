@@ -4,6 +4,7 @@ import { recipeConstants } from '../_constants'
 export const recipeActions = {
   getRecipes,
   getRecipe,
+  getMoreRecipes,
   createRecipe,
   deleteRecipe,
   getRecipeByTitle
@@ -22,10 +23,10 @@ function getRecipeByTitle(words) {
   function failure(words) { return { type: recipeConstants.GET_ALL_FAILURE, words } }
 }
 
-function getRecipes() {
+function getRecipes(obj) {
   return dispatch => {
     dispatch(request())
-    recipeService.getRecipes()
+    recipeService.getRecipes(obj)
       .then(recipes => dispatch(success(recipes)))
       .catch((err) => dispatch(failure(err)))
   }
@@ -33,6 +34,19 @@ function getRecipes() {
   function request() { return { type: recipeConstants.GET_ALL_REQUEST } }
   function success(recipes) { return { type: recipeConstants.GET_ALL_SUCCESS, recipes } }
   function failure(error) { return { type: recipeConstants.GET_ALL_FAILURE, error } }
+}
+
+function getMoreRecipes(obj) {
+  return dispatch => {
+    dispatch(request())
+    recipeService.getRecipes(obj)
+      .then(recipes => dispatch(success(recipes)))
+      .catch((err) => dispatch(failure(err)))
+  }
+    
+  function request() { return { type: recipeConstants.GET_MORE_REQUEST } }
+  function success(recipes) { return { type: recipeConstants.GET_MORE_SUCCESS, recipes } }
+  function failure(error) { return { type: recipeConstants.GET_MORE_FAILURE, error } }
 }
 
 function getRecipe(recipeId) {

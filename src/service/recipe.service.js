@@ -24,8 +24,12 @@ function getRecipeByTitle(words) {
     .then((json) => JSON.parse(json))
 }
 
-function getRecipes() {
-  return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe`).then((json) => JSON.parse(json))
+function getRecipes(obj) {
+  if (obj) {
+    return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe?start=${obj.start}&count=${obj.count}`).then((json) => JSON.parse(json))
+  } else {
+    return request(`${global.CONFIG.BACKEND.ADDRESS}/recipe`).then((json) => JSON.parse(json))
+  }
 }
 
 function getRecipe(recipeId) {

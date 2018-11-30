@@ -7,8 +7,8 @@ class TopButton extends React.Component {
   }
   render() {
     return (
-      <button title='Back to top' class='scroll' onClick={ () => { this.scrollToTop() }}>
-        <div class='arrow-up'></div>
+      <button title='Back to top' className='scroll' onClick={ () => { this.scrollToTop() }}>
+        <div className='arrow-up'></div>
       </button>
     )
   }

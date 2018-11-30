@@ -22,20 +22,38 @@ export function recipe(state = {gettingRecipe: false, hasRecipe: false, recipe: 
   }
 }
 
-export function recipes(state = {gettingRecipes: false, hasRecipes: false, recipes: {}}, action) {
+export function recipes(
+  state = {
+    gettingRecipes: false, 
+    hasRecipes: false, 
+    recipes: []
+  }
+  , action) {
   switch (action.type) {
   case recipeConstants.GET_ALL_REQUEST:
+  case recipeConstants.GET_MORE_REQUEST:
     return {
+      ...state,
       gettingRecipes: true
     }
   case recipeConstants.GET_ALL_SUCCESS:
     return {
+      ...state,
       hasRecipes: true,
       gettingRecipes: false,
       recipes: action.recipes
     }
-  case recipeConstants.GET_ALL_FAILURE:
+  case recipeConstants.GET_MORE_SUCCESS:
     return {
+      ...state,
+      hasRecipes: true,
+      gettingRecipes: false,
+      recipes: state.recipes.concat(action.recipes)
+    }
+  case recipeConstants.GET_ALL_FAILURE:
+  case recipeConstants.GET_MORE_FAILURE:
+    return {
+      ...state,
       err: action.error
     }
   default: return state
