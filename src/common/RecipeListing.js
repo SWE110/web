@@ -7,7 +7,11 @@ const RecipeListing = (props) => {
   return (
     <div className="recipe-box">
       <div className="card-image">
-        <Link to={props.onClickUrl}><img src={props.recipe.image[0]} /></Link>
+        <Link to={props.onClickUrl}>
+          <div to={props.onClickUrl} style={ { backgroundImage: `url(${props.recipe.image[0]}` } }>
+          </div>
+        </Link>
+        {/* <Link to={props.onClickUrl}><img src={props.recipe.image[0]} /></Link> */}
       </div>
       <div className="recipe-title">
         <Link to={props.onClickUrl}>{props.recipe.name}</Link>
