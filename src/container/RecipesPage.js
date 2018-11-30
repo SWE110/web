@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import _ from 'underscore'
 import Recipe from '../recipe/Recipe'
 import { connect } from 'react-redux'
-import { Header, RecipeListing } from '../common'
+import { Header, RecipeListing, TopButton } from '../common'
 
 import { recipeActions } from '../actions'
 import './RecipesPage.scss'
@@ -25,6 +25,7 @@ class RecipesPage extends Component {
     return (
       <div> 
         <Header />
+        <TopButton />
         <div className="main recipe-container">
           {recipes.hasRecipes &&
           _.map(recipes.recipes, (recipe, id) => {

@@ -31,7 +31,8 @@ function login(userpackage) {
 }
 
 function logout() {
-
+  localStorage.clear()
+  window.location.reload()
 }
 
 function register(registrationpackage) {

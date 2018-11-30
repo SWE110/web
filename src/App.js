@@ -11,7 +11,8 @@ import SearchBar from './common/SearchBar'
 import { PrivateRoute } from './common'
 import {
   HomePage,
-  LoginPage, 
+  LoginPage,
+  LogoutPage,
   ForgotPasswordPage, 
   RegistrationPage,
   RegistrationConfirmationPage,
@@ -50,7 +51,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/reset" component={TodoPage} />
-          <Route exact path="/logout" component={TodoPage} />
+          <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/confirm" component={RegistrationConfirmationPage} />
           {/* Profile Page: Protected */}
           <Route exact path="/profile" component={ProfilePage} />

@@ -56,11 +56,11 @@ class Recipe extends Component {
         </div>
         <div className="instructions">
           <h1>Instructions</h1>
-          {_.map(this.state.recipe_instructions, (item) => {
+          {_.map(this.state.recipe_instructions, (item, id) => {
             return (
               <Card className="steps">
                 <Card.Content>
-                  {item}
+                  {id+1}. {item}
                 </Card.Content>
               </Card>
             )

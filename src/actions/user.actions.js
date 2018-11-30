@@ -45,6 +45,7 @@ function userLogin(data) {
   function success(data) { return { type: userConstants.LOGIN_SUCCESS, data } }
   function failure(data) { return { type: userConstants.LOGIN_FAILURE, data } }
 }
+
 function userRegister(data) {
   // Do things
 

@@ -1,6 +1,8 @@
 
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { userService } from '../service'
 
 import { faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -13,8 +15,9 @@ class Profile extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      isLoggedIn: false
+      isLoggedIn: localStorage.loggedIn
     }
+
   }
   
   onHover = (event) => {
@@ -32,6 +35,7 @@ class Profile extends React.Component {
     const settings = []
     if (isLoggedIn) {
       settings.push({ name: 'Profile', link: '/profile' })
+      settings.push({ name: 'Logout', link: '/logout'})
     } else {
       settings.push({ name: 'Login', link: '/login' })
       settings.push({ name: 'Register', link: '/register' })
@@ -40,7 +44,7 @@ class Profile extends React.Component {
     return (
       <div className="profile" onMouseLeave={this.onLeave}>
         <Link onMouseEnter={this.onHover} to={ isLoggedIn ? '/profile' : '/login'}>
-          <div className="profile-text">hi.</div>
+          <div className="profile-text">hi {localStorage.getItem('username') || ''}</div>
           {
             isOpen ? 
               <FontAwesomeIcon icon={faCaretUp} /> :
@@ -55,4 +59,11 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+function mapStateToProps(state) {
+  const { users } = state
+  return {
+    users
+  }
+}
+
+export default connect(mapStateToProps)(Profile)

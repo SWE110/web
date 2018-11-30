@@ -1,4 +1,5 @@
 import LoginPage from './LoginPage'
+import LogoutPage from './LogoutPage'
 import RecipePage from './RecipePage'
 import RecipesPage from './RecipesPage'
 import RegistrationPage from './RegistrationPage'
@@ -10,6 +11,7 @@ import ProfilePage from './ProfilePage'
 export { 
   HomePage,
   LoginPage,
+  LogoutPage,
   RecipePage,
   RecipesPage,
   RegistrationPage,

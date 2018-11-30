@@ -10,6 +10,7 @@ import { faJedi } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'reactbulma'
 import { recipeActions } from '../actions'
+import { userService } from '../service'
 
 import './HomePage.scss'
 import './RecipesPage.scss'
@@ -18,10 +19,6 @@ class HomePage extends Component {
   constructor(props) {
     super(props)
     this.props.dispatch(recipeActions.getRecipes())
-  }
-
-  logout(e){
-    localStorage.clear()
   }
 
   render() {
@@ -35,7 +32,7 @@ class HomePage extends Component {
             <div className="spacing"></div>
             <div className="links">
               {loggedIn ? <Link className="link" to="/">{localStorage.getItem('username')}</Link> : <Link className="link" to="/login">Login</Link>}
-              {loggedIn ? <Link className="link" onClick={(e) => this.logout(e)} to="/">Logout</Link> : <Link className="link" to="/register">Register</Link>}
+              {loggedIn ? <Link className="link" to="/logout">Logout</Link> : <Link className="link" to="/register">Register</Link>}
             </div>
           </div>
           <div className="main home">
