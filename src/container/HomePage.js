@@ -18,7 +18,7 @@ import './RecipesPage.scss'
 class HomePage extends Component {
   constructor(props) {
     super(props)
-    this.props.dispatch(recipeActions.getRecipes())
+    this.props.dispatch(recipeActions.getRecipes({start: 0, count: 3}))
   }
 
   render() {
@@ -57,9 +57,7 @@ class HomePage extends Component {
           <div className="recipe-container">
             {recipes.hasRecipes &&
               _.map(recipes.recipes, (recipe, id) => {
-                if (id < 3) {
-                  return <RecipeListing key={id} onClickUrl={`recipes/${recipe.meal_id}`} recipe={recipes.recipes[id]} />
-                }
+                return <RecipeListing key={id} onClickUrl={`recipes/${recipe.meal_id}`} recipe={recipes.recipes[id]} />
               })
             }
           </div>
