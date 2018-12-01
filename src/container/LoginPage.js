@@ -21,16 +21,16 @@ class LoginPage extends Component {
     this.handleLogin = this.handleLogin.bind(this)
   }
 
+  onKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      this.handleLogin()
+    }
+  }
+
   handleLogin() {
     this.setState(state => ({
       notify: !state.notify
     }))
-    // setTimeout(() => {
-    //   this.setState(state => ({
-    //     notify: false
-    //   }))
-    // }, 1000)
-
 
     let loginpackage = {
       username: this.state.username,
@@ -60,7 +60,7 @@ class LoginPage extends Component {
     const loginFailed = this.props.users.loginFailed
     const loggingIn = this.props.users.loggingIn
     return (
-      <Container fluid id="primary-container">
+      <Container fluid id="primary-container" onKeyDown={this.onKeyPress}>
         <Box>
           <Hero>
             <Hero.Body>
