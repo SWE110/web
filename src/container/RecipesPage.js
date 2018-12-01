@@ -7,24 +7,30 @@ import { Header, RecipeListing, TopButton } from '../common'
 import { recipeActions, filterActions } from '../actions'
 import './RecipesPage.scss'
 
+let start, count
 class RecipesPage extends Component {
   constructor(props) {
     super(props)
+    this.resetCounter()
+  }
 
-    this.state = {
-      start: 0,
-      count: 6
-    }
+  resetCounter = () => {
+    start = 0
+    count = 6
+  }
+
+  incrementCounter = () => {
+    // start = count
+    count = count + 6
+
+    console.log(start, count)
   }
 
   componentWillMount() {
     const { recipes } = this.props
     if (!recipes.hasRecipes && !recipes.gettingRecipes) {
-      this.props.dispatch(recipeActions.getRecipes({start: this.state.start, count: this.state.count}))
-      this.setState({
-        start: this.state.count,
-        count: this.state.count + 6
-      })
+      this.props.dispatch(recipeActions.getRecipes({start, count}))
+      this.incrementCounter()
     }
   }
 
@@ -60,26 +66,22 @@ class RecipesPage extends Component {
     const { query, recipes, filter } = this.props
     const word = query ? query.word : ''
     const filterWord = filter ? filter.filter : ''
+
     if (!recipes.gettingRecipes) {
-      this.props.dispatch(recipeActions.getMoreRecipes({word, start: this.state.start, count: this.state.count, filter: filterWord }))
-      this.setState({
-        start: this.state.count,
-        count: this.state.count + 6
-      })
+      this.props.dispatch(recipeActions.getMoreRecipes({word, start, count, filter: filterWord }))
+      this.incrementCounter()
     }
   }
 
   setFilter = (filter) => {    
+    this.resetCounter()
     // We reset the search
     const { query } = this.props
     const word = query ? query.word : ''
     this.props.dispatch(filterActions.filter(filter))
-    this.props.dispatch(recipeActions.getRecipes({word, filter, start: 0, count: 6}))
+    this.props.dispatch(recipeActions.getRecipes({word, filter, start, count}))
     // Increment for the next search
-    this.setState({
-      start: 6,
-      count: 6 + 6
-    })
+    this.incrementCounter()
   }
 
   render() {
@@ -96,15 +98,14 @@ class RecipesPage extends Component {
             <div onClick={() => this.setFilter('total_time')}>Total Time</div>
           </div>
         </div>
-        <div 
-          className="main recipe-container">
+        <div className="main recipe-container">
           {recipes.hasRecipes &&
             _.map(recipes.recipes, (recipe, id) => {
               const url = `recipes/${recipe.meal_id}`
               return <RecipeListing onClickUrl={url} key={id} recipe={recipe}/>
             })
           }
-          {!recipes.hasRecipes &&
+          {(!recipes.hasRecipes || recipes.gettingRecipes) &&
             <div>Loading...</div>
           }
         </div>

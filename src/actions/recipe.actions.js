@@ -9,12 +9,12 @@ export const recipeActions = {
   getMoreRecipes
 }
 
-function getRecipes(obj) {
+function dis(obj, request, success, failure) {
   let word, start, count, filter
   if (obj)  {
     word = obj.word
     start = obj.start || 0
-    count = obj.count || 6
+    count = obj.count || 12
     filter = obj.filter
   }
   return dispatch => {
@@ -33,37 +33,17 @@ function getRecipes(obj) {
         .catch((err) => dispatch(failure(err)))
     }
   }
-    
+}
+
+function getRecipes(obj) {
+  return dis(obj, request, success, failure)
   function request() { return { type: recipeConstants.GET_ALL_REQUEST } }
   function success(recipes) { return { type: recipeConstants.GET_ALL_SUCCESS, recipes } }
   function failure(error) { return { type: recipeConstants.GET_ALL_FAILURE, error } }
 }
 
 function getMoreRecipes(obj) {
-  let word, start, count, filter
-  if (obj)  {
-    word = obj.word
-    start = obj.start || 0
-    count = obj.count || 6
-    filter = obj.filter
-  }
-  return dispatch => {
-    dispatch(request())
-    if (word) {
-      recipeService.getRecipeByTitle(word, start, count, filter)
-        .then(recipe => dispatch(success(recipe)))
-        .catch(error => dispatch(failure('Searching with word')))
-    } else if (filter) {
-      recipeService.getRecipeByTitle('', start, count, filter)
-        .then(recipe => dispatch(success(recipe)))
-        .catch(error => dispatch(failure('Searching with filter')))
-    } else {
-      recipeService.getRecipes(obj)
-        .then(recipes => dispatch(success(recipes)))
-        .catch((err) => dispatch(failure(err)))
-    }
-  }
-    
+  return dis(obj, request, success, failure)
   function request() { return { type: recipeConstants.GET_MORE_REQUEST } }
   function success(recipes) { return { type: recipeConstants.GET_MORE_SUCCESS, recipes } }
   function failure(error) { return { type: recipeConstants.GET_MORE_FAILURE, error } }

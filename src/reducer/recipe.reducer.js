@@ -48,7 +48,8 @@ export function recipes(
       ...state,
       hasRecipes: true,
       gettingRecipes: false,
-      recipes: state.recipes.concat(action.recipes)
+      recipes: (action.recipes)
+      // recipes: state.recipes.concat(action.recipes)
     }
   case recipeConstants.GET_ALL_FAILURE:
   case recipeConstants.GET_MORE_FAILURE:
