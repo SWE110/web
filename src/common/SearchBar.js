@@ -28,7 +28,7 @@ class SearchBar extends Component {
     const { query } = this.props
     const word = query.word || ''
     this.props.history.push('/recipes')
-    this.props.dispatch(recipeActions.getRecipes({ word }))
+    this.props.dispatch(recipeActions.getRecipes({ word, start: 0, count: 12 }))
   }
 
   onKeyPress(e) {

@@ -16,12 +16,12 @@ class RecipesPage extends Component {
 
   resetCounter = () => {
     start = 0
-    count = 6
+    count = 12
   }
 
   incrementCounter = () => {
     // start = count
-    count = count + 6
+    count = count + 12
   }
 
   componentWillMount() {
