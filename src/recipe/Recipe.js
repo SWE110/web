@@ -14,6 +14,14 @@ class Recipe extends Component {
   componentDidMount() {
     // this.setState(recipe)
   }
+
+  getTime = () => {
+    const { total_time } = this.state
+    const seconds = parseInt(total_time, 10)
+    const hours = Math.floor(seconds / 3600)
+    const minutes = Math.floor((seconds - (hours * 3600)) / 60)
+    return `${hours}h ${minutes}m`
+  }
   
   render() {
     const { name, image, desciption, 
@@ -41,7 +49,7 @@ class Recipe extends Component {
 
             <div className="recipe-info">
               <div className="bold">Time</div>
-              {total_time && total_time}
+              {total_time && this.getTime()}
             </div>
             <hr/>
 

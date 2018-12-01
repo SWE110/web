@@ -10,16 +10,21 @@ export const recipeActions = {
 }
 
 function getRecipes(obj) {
-  let word, start, count
+  let word, start, count, filter
   if (obj)  {
     word = obj.word
     start = obj.start || 0
     count = obj.count || 6
+    filter = obj.filter
   }
   return dispatch => {
     dispatch(request())
     if (word) {
-      recipeService.getRecipeByTitle(word, start, count)
+      recipeService.getRecipeByTitle(word, start, count, filter)
+        .then(recipe => dispatch(success(recipe)))
+        .catch(error => dispatch(failure(error)))
+    } else if (filter) {
+      recipeService.getRecipeByTitle('', start, count, filter)
         .then(recipe => dispatch(success(recipe)))
         .catch(error => dispatch(failure(error)))
     } else {
@@ -35,18 +40,23 @@ function getRecipes(obj) {
 }
 
 function getMoreRecipes(obj) {
-  let word, start, count
+  let word, start, count, filter
   if (obj)  {
     word = obj.word
     start = obj.start || 0
     count = obj.count || 6
+    filter = obj.filter
   }
   return dispatch => {
     dispatch(request())
     if (word) {
-      recipeService.getRecipeByTitle(word, start, count)
+      recipeService.getRecipeByTitle(word, start, count, filter)
         .then(recipe => dispatch(success(recipe)))
-        .catch(error => dispatch(failure(error)))
+        .catch(error => dispatch(failure('Searching with word')))
+    } else if (filter) {
+      recipeService.getRecipeByTitle('', start, count, filter)
+        .then(recipe => dispatch(success(recipe)))
+        .catch(error => dispatch(failure('Searching with filter')))
     } else {
       recipeService.getRecipes(obj)
         .then(recipes => dispatch(success(recipes)))

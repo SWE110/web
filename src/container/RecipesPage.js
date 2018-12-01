@@ -4,7 +4,7 @@ import Recipe from '../recipe/Recipe'
 import { connect } from 'react-redux'
 import { Header, RecipeListing, TopButton } from '../common'
 
-import { recipeActions } from '../actions'
+import { recipeActions, filterActions } from '../actions'
 import './RecipesPage.scss'
 
 class RecipesPage extends Component {
@@ -57,15 +57,29 @@ class RecipesPage extends Component {
   };
 
   load = () => {
-    const { query, recipes } = this.props
+    const { query, recipes, filter } = this.props
     const word = query ? query.word : ''
+    const filterWord = filter ? filter.filter : ''
     if (!recipes.gettingRecipes) {
-      this.props.dispatch(recipeActions.getMoreRecipes({word, start: this.state.start, count: this.state.count}))
+      this.props.dispatch(recipeActions.getMoreRecipes({word, start: this.state.start, count: this.state.count, filter: filterWord }))
       this.setState({
         start: this.state.count,
         count: this.state.count + 6
       })
     }
+  }
+
+  setFilter = (filter) => {    
+    // We reset the search
+    const { query } = this.props
+    const word = query ? query.word : ''
+    this.props.dispatch(filterActions.filter(filter))
+    this.props.dispatch(recipeActions.getRecipes({word, filter, start: 0, count: 6}))
+    // Increment for the next search
+    this.setState({
+      start: 6,
+      count: 6 + 6
+    })
   }
 
   render() {
@@ -75,6 +89,13 @@ class RecipesPage extends Component {
       <div ref={ (container) => this.container = container } > 
         <Header />
         <TopButton />
+        <div className="main filter-container">
+          Filter
+          <div className="filters">
+            <div onClick={() => this.setFilter('aggregate_rating')}>Aggregate Rating</div>
+            <div onClick={() => this.setFilter('total_time')}>Total Time</div>
+          </div>
+        </div>
         <div 
           className="main recipe-container">
           {recipes.hasRecipes &&
@@ -93,10 +114,11 @@ class RecipesPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const { recipes, query } = state
+  const { recipes, query, filter } = state
   return {
     recipes,
-    query
+    query,
+    filter
   }
 }
 

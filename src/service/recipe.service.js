@@ -9,16 +9,16 @@ export default {
   getRecipeByTitle    
 }
 
-function getRecipeByTitle(words, start, count) {
+function getRecipeByTitle(word, start, count, filter) {
   const uri = `${global.CONFIG.BACKEND.ADDRESS}/search`
-  console.log(words, start, count)
   return request({
     method: 'post',
     uri,
     body: JSON.stringify({
-      title: words,
+      title: word,
       start,
-      count
+      count,
+      order: filter || 'meal_id'
     }),
     headers: {
       'Content-Type': 'application/json'

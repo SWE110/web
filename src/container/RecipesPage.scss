@@ -42,3 +42,14 @@
         }
     }
 }
+
+.filter-container {
+    padding: 1%;
+    font-size: 1em;
+    font-weight: bold;
+
+    .filters {
+        font-weight: normal;
+        cursor: pointer;
+    }
+}
