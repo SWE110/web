@@ -22,8 +22,6 @@ class RecipesPage extends Component {
   incrementCounter = () => {
     // start = count
     count = count + 6
-
-    console.log(start, count)
   }
 
   componentWillMount() {

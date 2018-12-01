@@ -5,7 +5,6 @@ export function users(state = { loggedIn: false, loggingIn: false, loginFailed: 
   switch (action.type) {
 
   case userConstants.LOGIN_REQUEST:
-    console.log(action)
     return {
       loggingIn: true,
       loginFailed: false,
@@ -38,7 +37,6 @@ export function users(state = { loggedIn: false, loggingIn: false, loginFailed: 
     }
 
   case userConstants.REGISTER_REQUEST:
-    console.log(action)
     return {
       registering: true,
       registered: false,
