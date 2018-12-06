@@ -9,6 +9,7 @@ import { BrowserRouter as Router,
 import SearchBar from './common/SearchBar'
 
 import { PrivateRoute } from './common'
+import ForgotConfirm from './container/ForgotConfirm'
 import {
   HomePage,
   LoginPage,
@@ -50,7 +51,7 @@ class App extends Component {
           {/* Login/Register/Reset Password/Logout */}
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegistrationPage} />
-          <Route exact path="/reset" component={TodoPage} />
+          <Route exact path="/reset" component={ForgotPasswordPage} />
           <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/confirm" component={RegistrationConfirmationPage} />
           {/* Profile Page: Protected */}
@@ -58,6 +59,7 @@ class App extends Component {
           <Route exact path="/createRecipe" component={CreateRecipePage} />
           {/* Handle 404 */}
           <Route exact path="/config" component={ConfigPage} />
+          <Route exact path="/forgotConfirm" component={ForgotConfirm} />
           <Route component={NullPage} />
         </Switch>
       </Router>

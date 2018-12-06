@@ -59,18 +59,3 @@ class RegistrationConfirmationPage extends Component {
 }
 
 export default RegistrationConfirmationPage
-/*<Hero>
-                        <Hero.Body>
-                            <Title>
-                                Thank you for Registering. Please verify your account.
-                            </Title>
-
-                            <SubTitle/>
-                            In order to use Yummy, you must verify your account. An email has been sent to your email
-                            with a link to verify your account. If you have not received the email after a few minutes,
-                            please check you spam folder or re-send the verification email.
-                            <SubTitle/>
-
-                        </Hero.Body>
-                    </Hero>
-                    */
