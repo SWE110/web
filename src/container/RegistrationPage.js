@@ -31,6 +31,12 @@ class RegistrationPage extends Component {
         this.verify = this.verify.bind(this)
     }
 
+    keyDown = (e) => {
+      if (e.keyCode === 13) {
+        this.handleNewAccount()
+      }
+    }
+
     //need to md5 hash the password
     handleNewAccount() {
         if (this.state.password1 != this.state.password2) {
@@ -63,8 +69,6 @@ class RegistrationPage extends Component {
             alert('Must provide a password')
         }
         else {
-            console.log('passwords do match', this.state.password1, this.state.password2)
-
             this.setState(state => ({
                 notify_text: 'Submitting registration',
                 notify: !state.notify
@@ -89,7 +93,10 @@ class RegistrationPage extends Component {
             this.props.dispatch(userActions.userRegister(registrationpackage))
 
             // This is a one off event, sue me for not using redux! :P
-
+            // will: you're getting sued. on a side note, please add me on linkedin
+            // Actively looking for a job
+            // https://www.linkedin.com/in/imwillx/
+            // You may find references of my code by looking into the /recipe folder.
 
         }
     }
@@ -129,7 +136,6 @@ class RegistrationPage extends Component {
     updatePassword1(e) {
         const mypassword1 = e.target.value
         this.setState({ password1: mypassword1 })
-
 
         if (this.state.password2 == mypassword1) {
             this.setState({ passwords_match: true, notify: false })
@@ -173,7 +179,7 @@ class RegistrationPage extends Component {
         let button = <Button primary onClick={this.handleNewAccount}>Make Account</Button>
 
         return (
-            <div>
+            <div onKeyDown={this.keyDown}>
                 <div style={{marginTop: '1em'}} className="center">
                     <Link to="/">Go to Homepage</Link>
                 </div>
