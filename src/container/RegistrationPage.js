@@ -32,84 +32,52 @@ class RegistrationPage extends Component {
 
     //need to md5 hash the password
     handleNewAccount() {
-        if (this.state.password1 != this.state.password2) {
-            alert('Passwords must match')
-            console.log('passwords dont match', this.state.password1, this.state.password2)
 
-        }
-        else if (this.state.question == '') {
-            alert('Must provide a security question')
-        }
-        else if (this.state.answer == '') {
-            alert('Must provide a security answer')
-        }
-        else if (this.state.question == '') {
-            alert('Must provide a security question')
-        }
-        else if (this.state.username == '') {
-            alert('Must provide a username')
-        } 
-        else if (this.state.email == '') {
-            alert('Must provide a email')
-        }
-        else if (this.state.question == '') {
-            alert('Must provide a security question')
-        }
-        else if (this.state.password1 == '') {
-            alert('Must provide a password')
-        }
-        else if (this.state.password2 == '') {
-            alert('Must provide a password')
-        }
-        else {
-            console.log('passwords do match', this.state.password1, this.state.password2)
-
+        this.setState(state => ({
+            notify_text: 'Submitting registration',
+            notify: !state.notify
+        }))
+        setTimeout(() => {
             this.setState(state => ({
-                notify_text: 'Submitting registration',
-                notify: !state.notify
+                notify: false
             }))
-            setTimeout(() => {
-                this.setState(state => ({
-                    notify: false
-                }))
-            }, 1000)
+        }, 1000)
 
-            let registrationpackage = {
-                username: this.state.username,
-                password: this.state.password1,
-                email: this.state.email,
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
-                question: this.state.question,
-                answer: this.state.answer,
-
-            }
-
-            this.props.dispatch(userActions.userRegister(registrationpackage))
-
-            // This is a one off event, sue me for not using redux! :P
-
+        let registrationpackage = {
+            username: this.state.username,
+            password: this.state.password1,
+            email: this.state.email,
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            question: this.state.question,
+            answer: this.state.answer,
 
         }
+
+        this.props.dispatch(userActions.userRegister(registrationpackage))
+
+        // This is a one off event, sue me for not using redux! :P
+        
+
+
     }
 
     // This is broken... try filling everything out correctly, and then delete a whole Field besides password. You will see the button remains active 
     verify() {
         this.forceUpdate()
-        // console.log(this.state.username != '')
-        // console.log(this.state.firstname != '')
-        // console.log(this.state.lastname != '')
-        // console.log(this.state.email != '')
-        // console.log(this.state.password1 != '')
-        // console.log(this.state.password2 != '')
-        // console.log(this.state.question != '')
-        // console.log(this.state.answer != '')
-        // console.log(this.state.passwords_match)
+        console.log(this.state.username != '')
+        console.log(this.state.firstname != '')
+        console.log(this.state.lastname != '')
+        console.log(this.state.email != '')
+        console.log(this.state.password1 != '')
+        console.log(this.state.password2 != '')
+        console.log(this.state.question != '')
+        console.log(this.state.answer != '')
+        console.log(this.state.passwords_match)
         let myallgood = this.state.email != '' && this.state.firstname != '' && this.state.lastname != '' && this.state.password1 != '' && this.state.password2 != '' && this.state.question != '' && this.state.answer != '' && this.state.username != '' && this.state.passwords_match
         console.log('myallgood is ', myallgood)
         this.setState({ allgood: myallgood })
     }
-
 
     updateUsername(e) {
         const myusername = e.target.value
@@ -180,7 +148,13 @@ class RegistrationPage extends Component {
     render() {
 
 
-        let button = <Button primary onClick={this.handleNewAccount}>Make Account</Button>
+        let button
+        if (this.state.allgood) {
+            button = <Button primary onClick={this.handleNewAccount}>Make Account</Button>
+        }
+        else {
+            button = <Button disabled onClick={this.handleNewAccount}>Make Account</Button>
+        }
 
         return (
             <Container fluid id="primary-container">
@@ -244,7 +218,7 @@ class RegistrationPage extends Component {
 
                 </Box>
             </Container>
-
+            
         )
     }
 }
@@ -254,7 +228,7 @@ class RegistrationPage extends Component {
 function mapStateToProps(state) {
     const { users } = state
     return {
-        users
+      users
     }
-}
-export default withRouter(connect(mapStateToProps)(RegistrationPage))
+  }
+  export default withRouter(connect(mapStateToProps)(RegistrationPage))
