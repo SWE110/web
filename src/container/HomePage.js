@@ -11,11 +11,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from 'reactbulma'
 import { recipeActions } from '../actions'
 import { userService } from '../service'
+import { Profile} from '../common'
 
 import './HomePage.scss'
 import './RecipesPage.scss'
 
+function displayProfile(props) {
+  const isLoggedIn = props.loggedIn
+  if(isLoggedIn) {
+    return (<Link className="link" to="/profile">Profile</Link>)
+  }
+}
+
 class HomePage extends Component {
+
   constructor(props) {
     super(props)
     this.props.dispatch(recipeActions.getRecipes({start: 0, count: 3}))
@@ -31,7 +40,7 @@ class HomePage extends Component {
           <div className="home-header">
             <div className="spacing"></div>
             <div className="links">
-              {loggedIn ? <Link className="link" to="/">{localStorage.getItem('username')}</Link> : <Link className="link" to="/login">Login</Link>}
+              {loggedIn ? <Link className="link" to="/profile">{localStorage.getItem('username')}</Link> : <Link className="link" to="/login">Login</Link>}
               {loggedIn ? <Link className="link" to="/logout">Logout</Link> : <Link className="link" to="/register">Register</Link>}
             </div>
           </div>

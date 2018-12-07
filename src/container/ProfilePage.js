@@ -7,7 +7,7 @@ import { Container, Box, Table, Title, SubTitle, Button, Input, Notification } f
 import './onboard.css'
 
 var notification = 'Information Updated'
-var name  = 'a;lskdjfa;ls'
+var name  = localStorage.getItem('username')
 var email = 'asdfas'
 
 class ProfilePage extends Component {
@@ -51,7 +51,7 @@ class ProfilePage extends Component {
                 <SubTitle className="has-weight-bold">Basic Information</SubTitle>
                 <table width="100%" class="table is-bordered">
                     <tr>
-                        <td width="20%" className="has-text-weight-bold has-background-grey-lighter">Name</td>
+                        <td width="20%" className="has-text-weight-bold has-background-grey-lighter">Username</td>
                         <td width="40%" className="has-background-white-ter profile-name-td">
                             <input className="input profile-name" type="text" placeholder={name} id="newName"></input>
                         </td>
