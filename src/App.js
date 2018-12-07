@@ -14,11 +14,13 @@ import {
   LoginPage,
   LogoutPage,
   ForgotPasswordPage,
+  ForgotConfirmPage,
   RegistrationPage,
   RegistrationConfirmationPage,
   ProfilePage,
   RecipePage,
   RecipesPage,
+  
 } from './container'
 
 import CreateRecipePage from './container/CreateRecipe'
@@ -51,6 +53,7 @@ class App extends Component {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegistrationPage} />
           <Route exact path="/reset" component={ForgotPasswordPage} />
+          <Route exact path="/forgot-confirm" component={ForgotConfirmPage} />
           <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/confirm" component={RegistrationConfirmationPage} />
           {/* Profile Page: Protected */}

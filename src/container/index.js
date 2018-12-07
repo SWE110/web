@@ -7,6 +7,7 @@ import ForgotPasswordPage from './ForgotPasswordPage'
 import RegistrationConfirmationPage from './RegistrationConfirmationPage'
 import HomePage from './HomePage'
 import ProfilePage from './ProfilePage'
+import ForgotConfirmPage from './ForgotConfirm'
 
 export { 
   HomePage,
@@ -17,5 +18,6 @@ export {
   RegistrationPage,
   RegistrationConfirmationPage,
   ForgotPasswordPage,
-  ProfilePage
+  ProfilePage,
+  ForgotConfirmPage
 }
