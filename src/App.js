@@ -1,10 +1,10 @@
 /* eslint-disable linebreak-style */
 import React, { Component } from 'react'
 import './App.scss'
-import { BrowserRouter as Router, 
-  Route, 
+import { BrowserRouter as Router,
+  Route,
   withRouter,
-  Link, 
+  Link,
   Switch } from 'react-router-dom'
 import SearchBar from './common/SearchBar'
 
@@ -14,7 +14,7 @@ import {
   HomePage,
   LoginPage,
   LogoutPage,
-  ForgotPasswordPage, 
+  ForgotPasswordPage,
   RegistrationPage,
   RegistrationConfirmationPage,
   ProfilePage,
@@ -44,7 +44,7 @@ class App extends Component {
           {/* View Recipes */}
           <Route exact path="/recipes" component={RecipesPage} />
           <Route exact path="/recipes/:recipeId" component={RecipePage} />
-          
+
           {/* Submit Recipe: Protected */}
           <PrivateRoute exact path="/recipe/submit" isAuthed={true} component={RecipePage} />
 
