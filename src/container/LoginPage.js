@@ -90,7 +90,7 @@ class LoginPage extends Component {
             <div className="spacing-base">
               <label className="bold" htmlFor="medium">
               Password
-                <span className="has-text-link"> <Link to="/reset" >Forgot Password</Link> </span>
+                <span className="has-text-link right"> <Link to="/reset" >Forgot Password</Link> </span>
 
               </label>
               <Input medium id="password" onChange={(e) => this.updatePassword(e)} value={this.state.password} type='password' />
