@@ -50,7 +50,7 @@ class App extends Component {
           {/* Login/Register/Reset Password/Logout */}
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/register" component={RegistrationPage} />
-          <Route exact path="/reset" component={TodoPage} />
+          <Route exact path="/reset" component={ForgotPasswordPage} />
           <Route exact path="/logout" component={LogoutPage} />
           <Route exact path="/confirm" component={RegistrationConfirmationPage} />
           {/* Profile Page: Protected */}
