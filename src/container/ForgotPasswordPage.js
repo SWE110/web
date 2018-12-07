@@ -45,30 +45,36 @@ class ForgotPasswordPage extends Component {
 
     render() {
       return (
-        <Container onKeyDown={this.keyDown} fluid id="primary-container">
-          <Box>
-            <Hero>
-              <Hero.Body>
-                <Title className="center">
+        <div>
+          <div style={{marginTop: '1em'}} className="center">
+            <Link to="/">Go to Homepage</Link>
+          </div>
+
+          <Container onKeyDown={this.keyDown} fluid id="primary-container">
+            <Box>
+              <Hero>
+                <Hero.Body>
+                  <Title className="center">
                 Forgot Password
-                </Title>
-              </Hero.Body>
-            </Hero>
+                  </Title>
+                </Hero.Body>
+              </Hero>
 
-            <div className="notify spacing-base">
-              {this.state.notify ? 
-                <Notification warning id="notify">{this.state.notify_text || ''}</Notification>: 
-                ''}
-            </div>
+              <div className="notify spacing-base">
+                {this.state.notify ? 
+                  <Notification warning id="notify">{this.state.notify_text || ''}</Notification>: 
+                  ''}
+              </div>
 
-            <div className="spacing-base">
-              <label className="bold" htmlFor="medium">Enter your email</label>
-              <Input medium onChange={this.updateEmail} id="medium"/>
-            </div>
+              <div className="spacing-base">
+                <label className="bold" htmlFor="medium">Enter your email</label>
+                <Input medium onChange={this.updateEmail} id="medium"/>
+              </div>
 
-            <Button onClick={this.handleLogin}>Forgot Password</Button>
-          </Box>
-        </Container>
+              <Button onClick={this.handleLogin}>Forgot Password</Button>
+            </Box>
+          </Container>
+        </div>
       )
     }
 }
