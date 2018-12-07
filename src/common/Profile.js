@@ -43,16 +43,16 @@ class Profile extends React.Component {
 
     return (
       <div className="profile" onMouseLeave={this.onLeave}>
-        <Link onMouseEnter={this.onHover} to={ isLoggedIn ? '/profile' : '/login'}>
+        <div onMouseEnter={this.onHover} to={ isLoggedIn ? '/profile' : '/login'}>
           <div className="profile-text">hi {localStorage.getItem('username') || ''}</div>
           {
             isOpen ? 
               <FontAwesomeIcon icon={faCaretUp} /> :
               <FontAwesomeIcon icon={faCaretDown} />
           }
-        </Link>
+        </div>
         {
-          isOpen && <Dropdown title="Hello" items={settings} />
+          isOpen && <Dropdown items={settings} />
         }
       </div>
     )
