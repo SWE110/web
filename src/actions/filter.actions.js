@@ -7,7 +7,7 @@ export const filterActions = {
 function filter(filter) {
   return dispatch => {
     dispatch(request())
-    if (filter === 'meal_id' || filter === 'aggregate_rating' || filter === 'total_time') {
+    if (filter === 'meal_id' || filter === 'aggregate_rating' || filter === 'total_time' || filter === 'yield') {
       dispatch(success(filter))
     } else {
       dispatch(failure('Not a valid filter'))
