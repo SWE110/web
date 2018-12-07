@@ -94,6 +94,7 @@ class RecipesPage extends Component {
           <div className="filters">
             <div onClick={() => this.setFilter('aggregate_rating')}>Aggregate Rating</div>
             <div onClick={() => this.setFilter('total_time')}>Total Time</div>
+            <div onClick={() => this.setFilter('yield')}>Number of Servings</div>
           </div>
         </div>
         <div className="main recipe-container">
