@@ -60,43 +60,51 @@ class LoginPage extends Component {
     const loginFailed = this.props.users.loginFailed
     const loggingIn = this.props.users.loggingIn
     return (
-      <Container fluid id="primary-container" onKeyDown={this.onKeyPress}>
-        <Box>
-          <Hero>
-            <Hero.Body>
-              <Title className="center">
+      <div>
+        <div style={{marginTop: '1em'}} className="center">
+          <Link to="/">Go to Homepage</Link>
+        </div>
+        <div className="center">
+          <Link to="/register">Register</Link>
+        </div>
+        <Container fluid id="primary-container" onKeyDown={this.onKeyPress}>
+          <Box>
+            <Hero>
+              <Hero.Body>
+                <Title className="center">
                 Login
-              </Title>
-            </Hero.Body>
-          </Hero>
+                </Title>
+              </Hero.Body>
+            </Hero>
 
-          <div className="notify spacing-base">
-            {this.props.users.loginFailed ?
-              <Notification warning id="notify">Invalid Username or Password</Notification> :
-              ''}
-          </div>
+            <div className="notify spacing-base">
+              {this.props.users.loginFailed ?
+                <Notification warning id="notify">Invalid Username or Password</Notification> :
+                ''}
+            </div>
 
-          <div className="spacing-base">
-            <label className="bold" htmlFor="medium">Username</label>
-            <Input medium id="username" onChange={(e) => this.updateUsername(e)} value={this.state.username} />
-          </div>
-          <div className="spacing-base">
-            <label className="bold" htmlFor="medium">
+            <div className="spacing-base">
+              <label className="bold" htmlFor="medium">Username</label>
+              <Input medium id="username" onChange={(e) => this.updateUsername(e)} value={this.state.username} />
+            </div>
+            <div className="spacing-base">
+              <label className="bold" htmlFor="medium">
               Password
-              <span className="has-text-link"> <Link to="/reset" >Forgot Password</Link> </span>
+                <span className="has-text-link"> <Link to="/reset" >Forgot Password</Link> </span>
 
-            </label>
-            <Input medium id="password" onChange={(e) => this.updatePassword(e)} value={this.state.password} type='password' />
-          </div>
+              </label>
+              <Input medium id="password" onChange={(e) => this.updatePassword(e)} value={this.state.password} type='password' />
+            </div>
 
-          <Button onClick={this.handleLogin}>Log me in!</Button>
+            <Button onClick={this.handleLogin}>Log me in!</Button>
 
-          <br></br>
-          {/* Redirect to main page upon login */}
-          {loggedIn ? this.props.history.push('/') : ''}
+            <br></br>
+            {/* Redirect to main page upon login */}
+            {loggedIn ? this.props.history.push('/') : ''}
 
-        </Box>
-      </Container>
+          </Box>
+        </Container>
+      </div>
     )
   }
 }

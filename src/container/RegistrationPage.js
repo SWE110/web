@@ -183,67 +183,73 @@ class RegistrationPage extends Component {
         let button = <Button primary onClick={this.handleNewAccount}>Make Account</Button>
 
         return (
-            <Container fluid id="primary-container">
-                <Box>
-                    <Hero>
-                        <Hero.Body>
-                            <Title className="center">
-                                Create an Account
-                            </Title>
-                        </Hero.Body>
-                    </Hero>
+            <div>
+                <div style={{marginTop: '1em'}} className="center">
+                    <Link to="/">Go to Homepage</Link>
+                </div>
 
-                    <div className="notify spacing-base">
-                        {this.props.users.registerFailed ?
-                            <Notification danger id="notify">{this.props.users.registerError}</Notification> :
-                            ''}
-                    </div>
+                <Container fluid id="primary-container">
+                    <Box>
+                        <Hero>
+                            <Hero.Body>
+                                <Title className="center">
+                                    Create an Account
+                                </Title>
+                            </Hero.Body>
+                        </Hero>
 
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Username</label>
-                        <Input onChange={(e) => this.updateUsername(e)} value={this.state.username} medium id="username" />
-                    </div>
+                        <div className="notify spacing-base">
+                            {this.props.users.registerFailed ?
+                                <Notification danger id="notify">{this.props.users.registerError}</Notification> :
+                                ''}
+                        </div>
 
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">First Name</label>
-                        <Input onChange={(e) => this.updateFirstName(e)} value={this.state.firstname} medium id="firstname" />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Last Name</label>
-                        <Input onChange={(e) => this.updateLastName(e)} value={this.state.lastname} medium id="lastname" />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Email Address</label>
-                        <Input onChange={(e) => this.updateEmail(e)} value={this.state.email} medium id="email" />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Password</label>
-                        <Input onChange={(e) => this.updatePassword1(e)} value={this.state.password1} medium id="password1" type='password' />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Password (Again)</label>
-                        <Input onChange={(e) => this.updatePassword2(e)} value={this.state.password2} medium id="password2" type='password' />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Security Question</label>
-                        <Input onChange={(e) => this.updateQuestion(e)} value={this.state.question} medium id="question" />
-                    </div>
-                    <div className="spacing-base">
-                        <label className="bold" htmlFor="medium">Security Answer</label>
-                        <Input onChange={(e) => this.updateAnswer(e)} value={this.state.answer} medium id="answer" />
-                    </div>
-                    <div>
-                        {button}
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Username</label>
+                            <Input onChange={(e) => this.updateUsername(e)} value={this.state.username} medium id="username" />
+                        </div>
 
-                    </div>
-                    <div>
-                        <br></br>
-                        <Link to="/login" className="has-text-link float-right">Already have an account?</Link>
-                        {this.props.users.registered ? this.props.history.push('/login') : ''}
-                    </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">First Name</label>
+                            <Input onChange={(e) => this.updateFirstName(e)} value={this.state.firstname} medium id="firstname" />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Last Name</label>
+                            <Input onChange={(e) => this.updateLastName(e)} value={this.state.lastname} medium id="lastname" />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Email Address</label>
+                            <Input onChange={(e) => this.updateEmail(e)} value={this.state.email} medium id="email" />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Password</label>
+                            <Input onChange={(e) => this.updatePassword1(e)} value={this.state.password1} medium id="password1" type='password' />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Password (Again)</label>
+                            <Input onChange={(e) => this.updatePassword2(e)} value={this.state.password2} medium id="password2" type='password' />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Security Question</label>
+                            <Input onChange={(e) => this.updateQuestion(e)} value={this.state.question} medium id="question" />
+                        </div>
+                        <div className="spacing-base">
+                            <label className="bold" htmlFor="medium">Security Answer</label>
+                            <Input onChange={(e) => this.updateAnswer(e)} value={this.state.answer} medium id="answer" />
+                        </div>
+                        <div>
+                            {button}
 
-                </Box>
-            </Container>
+                        </div>
+                        <div>
+                            <br></br>
+                            <Link to="/login" className="has-text-link float-right">Already have an account?</Link>
+                            {this.props.users.registered ? this.props.history.push('/login') : ''}
+                        </div>
+
+                    </Box>
+                </Container>
+            </div>
 
         )
     }
