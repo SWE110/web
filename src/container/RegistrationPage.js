@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style,indent */
 import React, { Component } from 'react'
+import validator from 'email-validator'
 
 import { Link } from 'react-router-dom'
 import { Container, Box, Hero, Title, Input, Button, Notification, Field } from 'reactbulma'
@@ -49,8 +50,8 @@ class RegistrationPage extends Component {
         else if (this.state.username == '') {
             alert('Must provide a username')
         } 
-        else if (this.state.email == '') {
-            alert('Must provide a email')
+        else if (this.state.email == '' || !validator.validate(this.state.email)) {
+            alert('You must provide a valid email')
         }
         else if (this.state.question == '') {
             alert('Must provide a security question')
@@ -96,17 +97,7 @@ class RegistrationPage extends Component {
     // This is broken... try filling everything out correctly, and then delete a whole Field besides password. You will see the button remains active 
     verify() {
         this.forceUpdate()
-        // console.log(this.state.username != '')
-        // console.log(this.state.firstname != '')
-        // console.log(this.state.lastname != '')
-        // console.log(this.state.email != '')
-        // console.log(this.state.password1 != '')
-        // console.log(this.state.password2 != '')
-        // console.log(this.state.question != '')
-        // console.log(this.state.answer != '')
-        // console.log(this.state.passwords_match)
         let myallgood = this.state.email != '' && this.state.firstname != '' && this.state.lastname != '' && this.state.password1 != '' && this.state.password2 != '' && this.state.question != '' && this.state.answer != '' && this.state.username != '' && this.state.passwords_match
-        console.log('myallgood is ', myallgood)
         this.setState({ allgood: myallgood })
     }
 
@@ -130,11 +121,10 @@ class RegistrationPage extends Component {
         this.verify()
 
     }
-    updateEmail(e) {
+    updateEmail = (e) => {
         const myemail = e.target.value
         this.setState({ email: myemail })
         this.verify()
-
     }
     updatePassword1(e) {
         const mypassword1 = e.target.value
