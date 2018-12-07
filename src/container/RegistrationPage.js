@@ -212,7 +212,7 @@ class RegistrationPage extends Component {
                     </div>
                     <div>
                         <br></br>
-                        <Link to="/reset" className="float-right">Already have an account?</Link>
+                        <Link to="/login" className="has-text-link float-right">Already have an account?</Link>
                         {this.props.users.registered ? this.props.history.push('/login') : ''}
                     </div>
 
