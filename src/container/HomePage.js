@@ -27,7 +27,9 @@ class HomePage extends Component {
 
   constructor(props) {
     super(props)
-    this.props.dispatch(recipeActions.getRecipes({start: 0, count: 3}))
+
+    const random = parseInt(Math.random() * 50)
+    this.props.dispatch(recipeActions.getRecipes({start: random, count: 6}))
   }
 
   render() {
@@ -59,16 +61,21 @@ class HomePage extends Component {
               <SearchBar />
             </div>
 
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 197.402 197.402" refs={this.myArrow} id="Arrow" class="topArrow">
+              <polygon style={{fill:'#fff'}} points="146.883,197.402 45.255,98.698 146.883,0 152.148,5.418 56.109,98.698 152.148,191.98"/>
+            </svg>
           </div>
         </div>
         <div className="home-body">
           <h1>Recommendations for you!</h1>
-          <div className="recipe-container">
+          <div style={{}} className="recipe-container">
             {recipes.hasRecipes &&
               _.map(recipes.recipes, (recipe, id) => {
                 return <RecipeListing key={id} onClickUrl={`recipes/${recipe.meal_id}`} recipe={recipes.recipes[id]} />
               })
             }
+            <Link className="button center" to="/recipes" 
+              style={{margin: '1em auto', alignItems: 'center', justifyContent: 'center'}}>More Recipes</Link>
           </div>
         </div>
       </div>
