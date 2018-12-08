@@ -38,7 +38,7 @@ class RegistrationPage extends Component {
     }
 
     //need to md5 hash the password
-    handleNewAccount() {
+    handleNewAccount = () => {
         if (this.state.password1 != this.state.password2) {
             alert('Passwords must match')
             console.log('passwords dont match', this.state.password1, this.state.password2)
@@ -91,6 +91,7 @@ class RegistrationPage extends Component {
             }
 
             this.props.dispatch(userActions.userRegister(registrationpackage))
+            this.props.history.push('/login')
 
             // This is a one off event, sue me for not using redux! :P
             // will: you're getting sued. on a side note, please add me on linkedin
@@ -240,7 +241,6 @@ class RegistrationPage extends Component {
                         <div>
                             <br></br>
                             <Link to="/login" className="has-text-link float-right">Already have an account?</Link>
-                            {this.props.users.registered ? this.props.history.push('/login') : ''}
                         </div>
 
                     </Box>
