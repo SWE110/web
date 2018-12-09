@@ -91,8 +91,7 @@ class RegistrationPage extends Component {
             }
 
             this.props.dispatch(userActions.userRegister(registrationpackage))
-            this.props.history.push('/login')
-
+            window.scrollTo(0,0)
             // This is a one off event, sue me for not using redux! :P
             // will: you're getting sued. on a side note, please add me on linkedin
             // Actively looking for a job
@@ -176,7 +175,11 @@ class RegistrationPage extends Component {
 
     render() {
 
-
+        const { registered } = this.props.users
+        if (registered) {
+            this.props.history.push('/login')
+            window.location.reload()
+        } 
         let button = <Button primary onClick={this.handleNewAccount}>Make Account</Button>
 
         return (
